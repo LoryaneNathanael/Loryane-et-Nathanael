@@ -8,15 +8,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </head>
 <body>
+    <!-- Loader de chargement -->
     <div id="loader">
         <div class="spinner"></div>
     </div>
 
+    <!-- Vidéo de fond -->
     <video autoplay muted loop playsinline id="background-video" style="display: none;">
         <source src="background.mp4" type="video/mp4">
         Votre navigateur ne supporte pas les vidéos HTML5.
     </video>
 
+    <!-- Musique de fond avec un bouton de lecture -->
     <audio id="background-music" loop>
         <source src="musique.mp3" type="audio/mp3">
     </audio>
