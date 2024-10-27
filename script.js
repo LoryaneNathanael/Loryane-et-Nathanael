@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Charger les images
     function preloadImages(callback) {
-        const images = ['extérieur_recto.png', 'centre_droite.png', 'centre_gauche.png'];
+        const images = ['exterieur_recto.png', 'centre_droite.png', 'centre_gauche.png'];
         let loadedImages = 0;
 
         images.forEach((src) => {
