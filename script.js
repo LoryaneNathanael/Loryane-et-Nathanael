@@ -38,12 +38,9 @@ document.addEventListener('DOMContentLoaded', function() {
             centreDroite.style.display = 'block'; // Affiche l'intérieur (centre_droite)
             step++;
         } else if (step === 2) {
-            // Étape 2 : Effet de glissement pour centre_droite et centre_gauche
-            centreDroite.style.transform = 'translateX(100%)'; // Déplace centre_droite vers la droite
-            centreGauche.style.display = 'block'; // Affiche centre_gauche
-            setTimeout(() => {
-                centreGauche.style.transform = 'translateX(0)'; // Centre centre_gauche
-            }, 100);
+            // Étape 2 : Déclenche les animations de glissement
+            centreDroite.classList.add('slide-right'); // Déplace centre_droite vers la droite
+            centreGauche.classList.add('slide-left'); // Fait apparaître centre_gauche en glissant depuis la gauche
             step++;
         }
     });
