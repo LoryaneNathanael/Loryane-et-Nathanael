@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const cardContainer = document.getElementById('card-container');
     const card = document.getElementById('card');
+    const bookPages = document.getElementById('book-pages');
     const centreGauche = document.getElementById('centre-gauche');
     const centreDroite = document.getElementById('centre-droite');
     const playMusicButton = document.getElementById('play-music');
@@ -12,17 +13,17 @@ document.addEventListener('DOMContentLoaded', function() {
         backgroundMusic.play();
     });
 
-    // Animation d'ouverture de la carte
     cardContainer.addEventListener('click', function() {
         if (step === 1) {
-            // Cache l'image de la couverture et affiche les pages gauche et droite
-            card.style.display = 'none';
-            centreGauche.style.display = 'block';
-            centreDroite.style.display = 'block';
+            card.style.display = 'none'; // Masquer la couverture
+            bookPages.style.display = 'flex'; // Afficher les pages du centre
 
-            // Animation pour ouvrir la carte
-            centreGauche.style.transform = 'rotateY(0deg)'; // Ouvrir la page gauche
-            centreDroite.style.transform = 'rotateY(0deg)'; // Ouvrir la page droite
+            // Animation d'ouverture des pages
+            setTimeout(() => {
+                centreGauche.style.transform = 'rotateY(0deg)'; // Ouvre la page gauche
+                centreDroite.style.transform = 'rotateY(0deg)'; // Ouvre la page droite
+            }, 200);
+
             step++;
         }
     });
