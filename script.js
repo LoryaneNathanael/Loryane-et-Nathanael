@@ -1,7 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const backgroundMusic = document.getElementById('background-music');
+    const playMusicButton = document.getElementById('play-music');
     const exterieurRecto = document.getElementById('exterieur_recto');
     const centreDouble = document.getElementById('centre_double');
     let step = 1;
+
+    // Démarrer la musique
+    playMusicButton.addEventListener('click', function() {
+        backgroundMusic.play();
+    });
 
     // Animation au clic pour montrer `centre_double`
     exterieurRecto.addEventListener('click', function() {
