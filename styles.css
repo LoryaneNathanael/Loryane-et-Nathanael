@@ -36,35 +36,37 @@ video {
     z-index: -1;
 }
 
-.card-container, .book-pages {
+/* Conteneur de la carte fermée */
+.card-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    height: 100vh;
-}
-
-.card-img {
     width: 40vw;
     height: auto;
-    backface-visibility: hidden;
-    transition: transform 1s ease;
 }
 
-.page {
+/* Alignement des pages intérieures */
+.book-pages {
+    position: relative;
+    width: 80vw;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-img, .page {
     width: 40vw;
     height: auto;
-    position: absolute;
     transition: transform 1s ease;
-    backface-visibility: hidden;
 }
 
 #centre-gauche {
     transform-origin: right;
-    transform: rotateY(180deg);
+    transform: rotateY(180deg); /* Initialisation pour l'effet fermé */
 }
 
 #centre-droite {
     transform-origin: left;
-    transform: rotateY(180deg);
+    transform: rotateY(180deg); /* Initialisation pour l'effet fermé */
 }
