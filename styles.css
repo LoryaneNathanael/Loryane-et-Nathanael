@@ -11,6 +11,7 @@
 
 /* Image de la carte */
 #centre_double {
-    max-width: 100%;
-    height: auto;
+    width: auto;
+    height: 100vh; /* Ajuste l'image pour qu'elle prenne toute la hauteur de l'écran */
+    object-fit: contain; /* Garde les proportions sans rognage */
 }
