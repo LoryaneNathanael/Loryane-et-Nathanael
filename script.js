@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Charger les images
     function preloadImages(callback) {
-        const images = ['exterieur_recto.png', 'centre_droite.png'];
+        const images = ['extérieur_recto.png', 'centre_droite.png'];
         let loadedImages = 0;
 
         images.forEach((src) => {
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
     cover.addEventListener('click', function() {
         if (step === 1) {
             cover.style.transform = 'rotateY(-180deg)'; // Ouvre la couverture
-            inner.style.transform = 'rotateY(0deg)'; // Affiche l'intérieur
+            inner.style.display = 'block'; // Affiche l'intérieur (centre_droite) sans animation de rotation
             step++;
         }
     });
