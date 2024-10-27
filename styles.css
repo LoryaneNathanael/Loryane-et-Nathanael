@@ -66,14 +66,14 @@ video#background-video {
 /* Affiche uniquement la moitié droite de centre_double au départ */
 #centre_double {
     clip-path: inset(0 0 0 50%); /* Montre la moitié droite */
-    transform: translateX(-25%);
+    transform: translateX(0); /* Départ au centre de l’écran */
     transition: opacity 0.3s ease, transform 1s ease; /* Transition pour l'opacité et le glissement */
     opacity: 0; /* Masqué au départ */
 }
 
 /* Nouvelle position pour afficher la moitié gauche de centre_double */
 .slide-left {
-    transform: translateX(25%); /* Décale vers la droite */
+    transform: translateX(-50%); /* Décale vers la droite */
     clip-path: inset(0 50% 0 0); /* Affiche uniquement la moitié gauche */
 }
 
