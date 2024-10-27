@@ -5,8 +5,9 @@ video#background-video {
     left: 0;
     width: 100vw;
     height: 100vh;
-    object-fit: cover; /* Corrigé : "objectif-fit" devient "object-fit" */
+    object-fit: contain; /* Changer "cover" en "contain" pour éviter le rognage */
     z-index: -1;
+   
 }
 
 /* Conteneur pour tester le glissement */
@@ -14,32 +15,19 @@ video#background-video {
     position: relative;
     width: 100vw;
     height: 100vh;
-    object-fit: cover; /* Corrigé : "objectif-fit" devient "object-fit" */
+    object-fit: contain; /* Changer "cover" en "contain" */
     overflow: hidden;
     display: flex;
+   
 }
 
 /* Images de la carte */
 .card-img {
     width: 100vw;
     height: 100vh;
-    object-fit: cover; /* Corrigé : "objectif-fit" devient "object-fit" */
+    object-fit: contain; /* Changer "cover" en "contain" */
     position: absolute;
     top: 0;
     transition: transform 1s ease;
-}
-
-/* Masquer centre_gauche au départ, placé à gauche */
-.hidden {
-    transform: translateX(-100vw); /* Position initiale de centre_gauche, hors de l'écran à gauche */
-}
-
-/* Glissement de centre_droite vers la droite */
-.slide-out-right {
-    transform: translateX(100vw); /* Fait sortir complètement centre_droite vers la droite */
-}
-
-/* Glissement de centre_gauche vers le centre */
-.slide-in-left {
-    transform: translateX(0); /* Place centre_gauche au centre de l'écran */
+   
 }
