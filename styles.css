@@ -16,4 +16,5 @@
     object-fit: contain;
     position: relative;
     left: 0; /* Position de départ */
+    clip-path: inset(0 0 0 50%); /* Affiche uniquement la moitié droite */
 }
