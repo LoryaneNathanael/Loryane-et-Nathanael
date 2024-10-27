@@ -24,17 +24,16 @@
         <source src="musique.mp3" type="audio/mp3">
     </audio>
 
-    <img src="play.png" id="play-music" alt="Jouer la musique" style="position: fixed; top: 10px; left: 10px; z-index: 10; width: 100px; height: 100px; cursor: pointer;">
+    <img src="play.png" id="play-music" alt="Jouer la musique" class="music-button">
 
     <!-- Carte interactive fermée -->
-    <div class="card-container" id="card-container" style="display: none;">
+    <div class="card-container" id="card-container">
         <img src="exterieur_recto.png" alt="Carte extérieur" class="card-img" id="card">
     </div>
 
-    <!-- Les deux pages intérieures pour l'animation de dépliement -->
+    <!-- Carte intérieure dépliée -->
     <div class="book-pages" id="book-pages" style="display: none;">
-        <img src="centre_gauche.png" alt="Centre gauche" class="page" id="centre-gauche">
-        <img src="centre_droite.png" alt="Centre droite" class="page" id="centre-droite">
+        <img src="centre_double.png" alt="Centre double" class="card-img" id="centre-double">
     </div>
 
     <script src="script.js"></script>
