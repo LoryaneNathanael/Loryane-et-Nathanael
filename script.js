@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     cardContainer.addEventListener('click', function() {
         if (step === 1) {
-            card.style.display = 'none'; // Masquer la couverture
+            cardContainer.style.display = 'none'; // Masquer la couverture
             bookPages.style.display = 'flex'; // Afficher les pages du centre
 
             // Animation d'ouverture des pages
