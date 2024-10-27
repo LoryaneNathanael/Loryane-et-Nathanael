@@ -18,12 +18,14 @@ video#background-video {
     height: 100vh;
     z-index: 1;
     position: relative;
+    overflow: hidden; /* Pour éviter de voir les images dépasser */
 }
 
 /* Conteneur interne pour garder les images collées */
 .card-wrapper {
     display: flex;
     transition: transform 1s ease;
+    transform: translateX(0); /* Position initiale */
 }
 
 /* Image de la carte avec proportions respectées */
@@ -34,7 +36,12 @@ video#background-video {
     height: auto;
 }
 
-/* Animation de glissement pour faire sortir la card-wrapper */
-.slide-out-right {
-    transform: translateX(100vw); /* Fait sortir le conteneur vers la droite */
+/* Masquer centre_gauche au départ en le plaçant à gauche */
+.hidden {
+    transform: translateX(-100vw); /* Place centre_gauche hors écran à gauche */
+}
+
+/* Animation de glissement pour montrer centre_gauche et cacher centre_droite */
+.slide-to-left {
+    transform: translateX(-100vw); /* Fait glisser le conteneur pour montrer centre_gauche */
 }
