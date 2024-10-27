@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 400);
             step++;
         } else if (step === 2) {
-            // Déplace `centre_double` vers la droite pour afficher la moitié gauche
+            // Glissement pour afficher la moitié gauche de `centre_double`
             centreDouble.classList.add('slide-left');
             step++;
         }
