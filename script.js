@@ -1,27 +1,23 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const exteriorCard = document.getElementById('card-exterior');
-    const doubleCard = document.getElementById('card-double');
-    const downloadButton = document.getElementById('download-button');
-    const answerButton = document.getElementById('answer-button');
-    const backgroundMusic = document.getElementById('background-music');
+    const cardContainer = document.getElementById('card-container');
+    const card = document.getElementById('card');
+    const centreGauche = document.getElementById('centre-gauche');
+    const centreDroite = document.getElementById('centre-droite');
     const playMusicButton = document.getElementById('play-music');
-
+    const backgroundMusic = document.getElementById('background-music');
     let step = 1;
 
-    // Musique
-    playMusicButton.addEventListener('click', () => {
+    playMusicButton.addEventListener('click', function() {
         backgroundMusic.play();
     });
 
-    // Animation d'ouverture de carte
-    exteriorCard.addEventListener('click', function() {
+    cardContainer.addEventListener('click', function() {
         if (step === 1) {
-            exteriorCard.style.transform = 'perspective(1000px) rotateY(-180deg)'; // Effet d'ouverture de livre
-            setTimeout(() => {
-                exteriorCard.classList.add('hidden'); // Cache la couverture
-                doubleCard.classList.remove('hidden'); // Affiche l'intérieur
-                doubleCard.style.transform = 'perspective(1000px) rotateY(0deg)'; // Ouverture vers l'intérieur
-            }, 1000); // Après l'animation de 1 seconde
+            card.style.display = 'none';
+            centreGauche.style.display = 'block';
+            centreDroite.style.display = 'block';
+            centreGauche.style.transform = 'rotateY(0deg)'; // Ouvrir la page gauche
+            centreDroite.style.transform = 'rotateY(0deg)'; // Ouvrir la page droite
             step++;
         }
     });
