@@ -1,0 +1,92 @@
+/* Loader de chargement */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fddde6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+/* Spinner - cercle qui tourne */
+.spinner {
+    border: 8px solid #ffffff;
+    border-top: 8px solid #000000;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Styles vidéo de fond */
+video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Conteneur général pour centrer la carte */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #fddde6;
+}
+
+/* Conteneur pour la carte */
+.card-container {
+    position: relative;
+    width: 400px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 90vw;
+    max-height: 90vh;
+    transition: transform 1s ease;
+}
+
+/* Style pour les images de la carte */
+.card-img {
+    width: 100%;
+    height: auto;
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Boutons */
+#download-button, #answer-button, .music-button {
+    position: fixed;
+    width: 150px;
+    height: auto;
+    opacity: 0.7;
+    cursor: pointer;
+    display: none;
+}
+
+.music-button {
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+}
+
+#download-button, #answer-button:hover {
+    opacity: 1;
+}
