@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loryane et Nathanael</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <!-- Loader de chargement -->
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Vidéo de fond -->
+    <video autoplay muted loop playsinline id="background-video" style="display: none;">
+        <source src="background.mp4" type="video/mp4">
+        Votre navigateur ne supporte pas les vidéos HTML5.
+    </video>
+
+    <!-- Musique de fond avec un bouton de lecture -->
+    <audio id="background-music" loop>
+        <source src="musique.mp3" type="audio/mp3">
+        Votre navigateur ne supporte pas l'élément audio.
+    </audio>
+    <img src="play.png" id="play-music" alt="Jouer la musique" class="music-button">
+
+    <!-- Carte extérieure (recto) -->
+    <div class="card-container" id="card-container">
+        <img src="extérieur_recto.png" alt="Carte extérieure recto" class="card-img" id="exterieur-recto">
+        <img src="centre_double.png" alt="Centre double" class="card-img" id="centre-double" style="display: none;">
+        <img src="centre_simple.png" alt="Centre simple" class="card-img" id="centre-simple" style="display: none;">
+        <img src="henné_recto.png" alt="Carte Henné recto" class="card-img" id="henne-recto" style="display: none;">
+        <img src="henné_verso.png" alt="Carte Henné verso" class="card-img" id="henne-verso" style="display: none;">
+        <img src="arrière.png" alt="Arrière de la carte" class="card-img" id="arriere" style="display: none;">
+    </div>
+
+    <!-- Boutons de téléchargement et réponse -->
+    <img src="telechargement.png" id="download-button" alt="Télécharger l'invitation" style="display: none;">
+    <img src="answer.png" id="answer-button" alt="Répondre à l'invitation" style="display: none;">
+
+    <!-- Inclusion du script JS -->
+    <script src="script.js"></script>
+
+    <!-- Script pour le loader -->
+    <script>
+        window.addEventListener('load', function() {
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('card-container').style.display = 'block';
+            document.getElementById('background-video').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
