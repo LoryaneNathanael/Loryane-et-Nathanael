@@ -31,6 +31,9 @@
 
 /* Effet d'ouverture de livre */
 .open-book {
-    transform-origin: right;
-    transform: rotateY(-180deg); /* Ouvre de droite à gauche */
+    transform-origin: left; /* Aligne l'origine de rotation à gauche pour une ouverture naturelle */
+    transform: rotateY(180deg); /* Ajuste la rotation pour une ouverture de droite à gauche */
 }
+
+
+    
