@@ -4,8 +4,8 @@ video#background-video {
     top: 0;
     left: 0;
     width: 100vw;
-    height:100vh;
-    object-fit: cover;
+    height: 100vh;
+    object-fit: cover; /* Corrigé : "objectif-fit" devient "object-fit" */
     z-index: -1;
 }
 
@@ -13,8 +13,8 @@ video#background-video {
 .book-container {
     position: relative;
     width: 100vw;
-    height:100vh;
-    objectif-fit: cover;
+    height: 100vh;
+    object-fit: cover; /* Corrigé : "objectif-fit" devient "object-fit" */
     overflow: hidden;
     display: flex;
 }
@@ -22,8 +22,8 @@ video#background-video {
 /* Images de la carte */
 .card-img {
     width: 100vw;
-    height:100vh;
-    objectif-fit: cover;
+    height: 100vh;
+    object-fit: cover; /* Corrigé : "objectif-fit" devient "object-fit" */
     position: absolute;
     top: 0;
     transition: transform 1s ease;
