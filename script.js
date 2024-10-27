@@ -14,21 +14,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     cardContainer.addEventListener('click', function() {
         if (step === 1) {
-            // Ouvre la couverture vers la gauche pour afficher centre_droit
+            // Étape 1 : la carte se retourne comme un livre
             card.style.transform = 'rotateY(-180deg)';
             setTimeout(() => {
                 cardContainer.style.display = 'none';
-                centreDroit.classList.remove('hidden'); // Affiche centre_droit
+                centreDroit.classList.remove('hidden'); // Affiche centre_droite
             }, 1000);
-
             step++;
         } else if (step === 2) {
-            // Glisse centre_droit vers la droite pour révéler centre_gauche
-            centreDroit.style.transform = 'translateX(50vw)';
+            // Étape 2 : centre_droite glisse vers la droite et centre_gauche apparaît à gauche
+            centreDroit.style.transform = 'translateX(50vw)'; // Glissement vers la droite
             setTimeout(() => {
                 centreGauche.classList.remove('hidden'); // Affiche centre_gauche
-            }, 1000);
-
+            }, 500);
             step++;
         }
     });
