@@ -10,21 +10,21 @@ document.addEventListener('DOMContentLoaded', function() {
         backgroundMusic.play();
     });
 
-    // Animation au clic pour montrer `centre_double`
+    // Animation au clic
     exterieurRecto.addEventListener('click', function() {
         if (step === 1) {
-            // Affiche immédiatement `centre_double` avec une opacité réduite
+            // Ouvre `exterieur_recto` pour afficher `centre_double`
             centreDouble.classList.remove('hidden');
             centreDouble.style.opacity = '0';
-
-            // Applique l'effet d'ouverture sur `exterieur_recto`
             exterieurRecto.classList.add('open-book');
-
-            // Augmente l'opacité de `centre_double` plus rapidement
             setTimeout(() => {
                 centreDouble.style.opacity = '1';
-                exterieurRecto.style.display = 'none'; // Cache `exterieur_recto`
-            }, 400); // Délai réduit pour synchroniser
+                exterieurRecto.style.display = 'none';
+            }, 400);
+            step++;
+        } else if (step === 2) {
+            // Déplace `centre_double` vers la droite pour afficher la moitié gauche
+            centreDouble.classList.add('slide-left');
             step++;
         }
     });
