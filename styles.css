@@ -1,3 +1,31 @@
+/* Style pour le loader */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fddde6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.spinner {
+    border: 8px solid #ffffff;
+    border-top: 8px solid #000000;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 /* Vidéo de fond */
 video#background-video {
     position: fixed;
@@ -9,30 +37,45 @@ video#background-video {
     z-index: -1;
 }
 
-/* Conteneur centré */
+/* Conteneur pour centrer les images */
 .book-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Conteneur interne pour superposer les images */
-.card-wrapper {
-    display: flex;
-    transition: transform 1s ease;
 }
 
 /* Images de la carte */
 .card-img {
-    max-width: 50vw; /* Pour que les deux images fassent ensemble 100vw */
+    max-width: 100vw;
+    max-height: 100vh;
+    width: auto;
     height: auto;
+    transition: transform 1s ease;
+    position: absolute;
 }
 
-/* Glissement de card-wrapper pour faire apparaître centre_gauche */
-.slide-left {
-    transform: translateX(-50vw); /* Déplace le conteneur pour afficher centre_gauche */
+/* Masquer `centre_double` au départ */
+.hidden {
+    display: none;
+}
+
+/* Style pour le bouton de lecture de la musique */
+.control-button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+
+/* Effet d'ouverture de livre */
+.open-book {
+    transform-origin: left; /* Effet de rotation autour de l'origine gauche */
+    transform: rotateY(-180deg); /* Rotation pour ouvrir */
 }
