@@ -14,6 +14,7 @@ video#background-video {
     position: relative;
     width: 100vw;
     height:100vh;
+    objectif-fit: cover;
     overflow: hidden;
     display: flex;
 }
@@ -22,6 +23,7 @@ video#background-video {
 .card-img {
     width: 100vw;
     height:100vh;
+    objectif-fit: cover;
     position: absolute;
     top: 0;
     transition: transform 1s ease;
