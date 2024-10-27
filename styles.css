@@ -6,7 +6,7 @@ video#background-video {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-    z-index: -1; /* Place la vidéo derrière les autres éléments */
+    z-index: -1;
 }
 
 /* Conteneur pour tester le glissement */
@@ -22,18 +22,17 @@ video#background-video {
 
 /* Image de la carte */
 .card-img {
-    width: 80%;
-    max-width: 400px;
+    width: 50%; /* Ajuste la largeur à 50% pour que les deux images ensemble couvrent le centre */
+    max-width: 200px;
     height: auto;
     transition: transform 1s ease;
     position: absolute;
     top: 0;
-    left: 0;
 }
 
 /* Animation de glissement vers la droite */
 .slide-out-right {
-    transform: translateX(100vw); /* Fait sortir centre_droite vers la droite */
+    transform: translateX(100%); /* Fait sortir centre_droite vers la droite */
 }
 
 /* Animation de glissement vers le centre */
@@ -44,6 +43,6 @@ video#background-video {
 
 /* Masquer centre_gauche au départ */
 .hidden {
-    transform: translateX(-100vw); /* Cache centre_gauche hors écran à gauche */
+    transform: translateX(-100%); /* Cache centre_gauche juste à gauche de centre_droite */
     opacity: 0;
 }
