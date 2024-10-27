@@ -1,3 +1,42 @@
+/* Style pour le loader */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fddde6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.spinner {
+    border: 8px solid #ffffff;
+    border-top: 8px solid #000000;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Vidéo de fond */
+video#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+
 /* Conteneur pour centrer les images */
 .book-container {
     position: relative;
@@ -31,9 +70,17 @@
 
 /* Effet d'ouverture de livre */
 .open-book {
-    transform-origin: left; /* Aligne l'origine de rotation à gauche pour une ouverture naturelle */
-    transform: rotateY(180deg); /* Ajuste la rotation pour une ouverture de droite à gauche */
+    transform-origin: left;
+    transform: rotateY(180deg); /* Ouvre de droite à gauche */
 }
 
-
-    
+/* Style pour le bouton de lecture de la musique */
+.control-button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
