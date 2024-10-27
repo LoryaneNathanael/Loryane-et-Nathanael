@@ -1,3 +1,31 @@
+/* Style pour le loader */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fddde6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.spinner {
+    border: 8px solid #ffffff;
+    border-top: 8px solid #000000;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 /* Vidéo de fond */
 video#background-video {
     position: fixed;
@@ -27,7 +55,7 @@ video#background-video {
     width: auto;
     height: auto;
     position: absolute;
-    transition: transform 0.8s ease; /* Accélère l'animation de rotation */
+    transition: transform 1s ease;
 }
 
 /* Masquer `centre_double` au départ */
@@ -35,19 +63,25 @@ video#background-video {
     display: none;
 }
 
-/* Affiche uniquement la moitié droite de centre_double */
+/* Affiche uniquement la moitié droite de centre_double au départ */
 #centre_double {
-    clip-path: inset(0 0 0 50%);
+    clip-path: inset(0 0 0 50%); /* Montre la moitié droite */
     transform: translateX(-25%);
-    transition: opacity 0.3s ease; /* Accélère la transition d'opacité */
+    transition: opacity 0.3s ease, transform 1s ease; /* Transition pour l'opacité et le glissement */
     opacity: 0; /* Masqué au départ */
+}
+
+/* Nouvelle position pour afficher la moitié gauche de centre_double */
+.slide-left {
+    transform: translateX(25%); /* Décale vers la droite */
+    clip-path: inset(0 50% 0 0); /* Affiche uniquement la moitié gauche */
 }
 
 /* Effet d'ouverture de livre */
 .open-book {
     transform-origin: left;
     transform: rotateY(180deg); /* Ouvre de droite à gauche */
-    transition: transform 0.8s ease; /* Accélère l'ouverture */
+    transition: transform 0.8s ease;
 }
 
 /* Style pour le bouton de lecture de la musique */
