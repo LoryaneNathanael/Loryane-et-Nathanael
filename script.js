@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
             step++;
         } else if (step === 2) {
             // Étape 2 : centre_droite glisse vers la droite, centre_gauche apparaît
-            centreDroit.style.transform = 'translateX(50vw)'; // Déplacement vers la droite
+            centreDroit.style.transform = 'translateX(30vw)'; // Déplacement vers la droite
             setTimeout(() => {
                 centreGauche.classList.remove('hidden'); // Affiche centre_gauche
             }, 500);
