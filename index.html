@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loryane et Nathanael</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Inclusion de jsPDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </head>
 <body>
@@ -28,16 +29,15 @@
     <!-- Bouton lecture musique en image -->
     <img src="play.png" id="play-music" alt="Jouer la musique" style="position: fixed; top: 10px; left: 10px; z-index: 10; width: 100px; height: 100px; cursor: pointer;">
 
-    <!-- Carte interactive -->
-    <div class="card-container" id="card-container" style="display: none;">
-        <img src="extérieur_recto.png" alt="Carte recto extérieur" class="card-img" id="card">
+    <!-- Conteneur pour l'animation de carte -->
+    <div class="book-container">
+        <div class="book-cover">
+            <img src="extérieur_recto.png" alt="Carte recto extérieur" class="card-img" id="cover">
+        </div>
+        <div class="book-inner">
+            <img src="centre_double.png" alt="Carte intérieure" class="card-img" id="inner">
+        </div>
     </div>
-
-    <!-- L'image de téléchargement (cachée au début) -->
-    <img src="telechargement.png" id="download-button" alt="Télécharger l'invitation" style="display: none;">
-
-    <!-- L'image de réponse (cachée au début) -->
-    <img src="answer.png" id="answer-button" alt="Répondre à l'invitation" style="display: none;">
 
     <!-- Inclusion du script JS -->
     <script src="script.js"></script>
@@ -46,7 +46,6 @@
     <script>
         window.addEventListener('load', function() {
             document.getElementById('loader').style.display = 'none';
-            document.getElementById('card-container').style.display = 'block';
             document.getElementById('background-video').style.display = 'block';
         });
     </script>
