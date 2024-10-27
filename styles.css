@@ -14,11 +14,6 @@
     width: auto;
     height: 100vh;
     object-fit: contain;
-    transition: transform 1s ease; /* Transition pour le glissement */
-    transform: translateX(0); /* Position initiale */
-}
-
-/* Classe pour déclencher le glissement */
-.slide-left {
-    transform: translateX(-100vw); /* Glisse l'image vers la gauche */
+    position: relative;
+    left: 0; /* Position de départ */
 }
