@@ -4,44 +4,14 @@
     <meta charset="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invitation Interactive</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </head>
 <body>
-    <!-- Loader de chargement -->
-    <div id="loader">
-        <div class="spinner"></div>
-    </div>
-
-    <!-- Vidéo de fond -->
-    <video autoplay muted loop playsinline id="background-video" style="display: none;">
-        <source src="background.mp4" type="video/mp4">
-        Votre navigateur ne supporte pas les vidéos HTML5.
-    </video>
-
-    <!-- Musique de fond avec un bouton de lecture -->
-    <audio id="background-music" loop>
-        <source src="musique.mp3" type="audio/mp3">
-        Votre navigateur ne supporte pas l'élément audio.
-    </audio>
-
-    <!-- Bouton lecture musique en image -->
-    <img src="play.png" id="play-music" alt="Jouer la musique" class="control-button">
-
     <!-- Conteneur pour les images -->
     <div class="book-container">
         <img src="exterieur_recto.png" alt="Carte recto extérieur" class="card-img" id="exterieur_recto">
-        <div class="half-view">
-            <img src="centre_double.png" alt="Carte intérieure double" class="card-img hidden" id="centre_double">
-        </div>
+        <img src="centre_double.png" alt="Carte intérieure double" class="card-img hidden" id="centre_double">
     </div>
 
     <script src="script.js"></script>
-
-    <script>
-        window.addEventListener('load', function() {
-            document.getElementById('loader').style.display = 'none';
-            document.getElementById('background-video').style.display = 'block';
-        });
-    </script>
 </body>
 </html>
