@@ -11,19 +11,23 @@ video#background-video {
 
 /* Conteneur pour tester le glissement */
 .book-container {
-    position: relative;
-    width: 300px;
-    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
     z-index: 1;
 }
 
+/* Image de la carte */
 .card-img {
-    width: 100%;
+    width: 80%; /* Ajuste l’image à 80% de la largeur de l’écran */
+    max-width: 400px; /* Limite la taille maximale pour les grands écrans */
     height: auto;
-    transition: transform 1s ease; /* Transition de glissement */
+    transition: transform 1s ease; /* Transition pour le glissement */
 }
 
 /* Animation de glissement vers la droite */
 .slide-out-right {
-    transform: translateX(300px); /* Fait sortir l'image vers la droite */
+    transform: translateX(100vw); /* Fait sortir l'image vers la droite */
 }
