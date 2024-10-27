@@ -16,7 +16,6 @@
     <!-- Vidéo de fond -->
     <video autoplay muted loop playsinline id="background-video" style="display: none;">
         <source src="background.mp4" type="video/mp4">
-        Votre navigateur ne supporte pas les vidéos HTML5.
     </video>
 
     <!-- Musique de fond avec un bouton de lecture -->
@@ -26,7 +25,7 @@
 
     <img src="play.png" id="play-music" alt="Jouer la musique" class="music-button">
 
-    <!-- Image initiale de la carte fermée (extérieur recto) -->
+    <!-- Carte fermée (première image) -->
     <div class="card-container" id="card-container">
         <img src="exterieur_recto.png" alt="Carte extérieur" class="card-img" id="card">
     </div>
@@ -40,12 +39,5 @@
     </div>
 
     <script src="script.js"></script>
-    <script>
-        window.addEventListener('load', function() {
-            document.getElementById('loader').style.display = 'none';
-            document.getElementById('card-container').style.display = 'block';
-            document.getElementById('background-video').style.display = 'block';
-        });
-    </script>
 </body>
 </html>
