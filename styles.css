@@ -1,17 +1,17 @@
-/* Style de base pour la carte */
+/* Conteneur pour l'animation de la carte */
 .book-container {
     position: relative;
-    width: 300px; 
+    width: 300px; /* Taille ajustée */
     height: auto;
     perspective: 1000px;
-    z-index: 1;
+    z-index: 1; /* Place la carte devant la vidéo */
 }
 
-.book-cover, .book-inner, .book-left {
+.book-cover, .book-inner {
     position: absolute;
     width: 100%;
     height: 100%;
-    transition: transform 1s ease, opacity 1s ease;
+    transition: transform 1s ease;
     backface-visibility: hidden;
 }
 
@@ -21,21 +21,16 @@
 }
 
 .book-inner {
+    transform: none;
     z-index: 1;
 }
 
-.book-left {
-    display: none;
+/* Animation de glissement vers la droite */
+.slide-out-right {
+    transform: translateX(100%); /* Fait sortir l'image vers la droite */
 }
 
-/* Animation de glissement */
-.slide-right {
-    transform: translateX(100%);
-    opacity: 0;
-}
-
-.slide-left {
-    display: block;
-    transform: translateX(0%);
-    opacity: 1;
+.card-img {
+    width: 100%;
+    height: auto;
 }
