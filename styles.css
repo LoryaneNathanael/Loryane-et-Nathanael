@@ -9,41 +9,30 @@ video#background-video {
     z-index: -1;
 }
 
-/* Conteneur pour centrer et superposer les images */
+/* Conteneur centré */
 .book-container {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Conteneur interne pour superposer les images */
+.card-wrapper {
+    display: flex;
+    transition: transform 1s ease;
 }
 
 /* Images de la carte */
 .card-img {
-    max-width: 100vw;
-    max-height: 100vh;
-    width: auto;
+    max-width: 50vw; /* Pour que les deux images fassent ensemble 100vw */
     height: auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: transform 1s ease;
 }
 
-/* Masquer centre_gauche au départ, placé à gauche */
-.hidden {
-    transform: translate(-100vw, -50%); /* Position initiale de centre_gauche, hors de l'écran à gauche */
-}
-
-/* Glissement de centre_droite vers la droite */
-.slide-out-right {
-    transform: translate(100vw, -50%);
-}
-
-/* Glissement de centre_gauche vers le centre */
-.slide-in-left {
-    transform: translate(-50%, -50%);
+/* Glissement de card-wrapper pour faire apparaître centre_gauche */
+.slide-left {
+    transform: translateX(-50vw); /* Déplace le conteneur pour afficher centre_gauche */
 }
