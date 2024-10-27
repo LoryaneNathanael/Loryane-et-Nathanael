@@ -63,6 +63,12 @@ video#background-video {
     display: none;
 }
 
+/* Effet d'ouverture de livre */
+.open-book {
+    transform-origin: right; /* Ouvrir de la droite vers la gauche */
+    transform: rotateY(-180deg); /* Rotation pour ouvrir */
+}
+
 /* Style pour le bouton de lecture de la musique */
 .control-button {
     position: fixed;
@@ -72,10 +78,4 @@ video#background-video {
     width: 100px;
     height: 100px;
     cursor: pointer;
-}
-
-/* Effet d'ouverture de livre */
-.open-book {
-    transform-origin: left; /* Effet de rotation autour de l'origine gauche */
-    transform: rotateY(-180deg); /* Rotation pour ouvrir */
 }
