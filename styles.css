@@ -1,31 +1,3 @@
-/* Style pour le loader */
-#loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #fddde6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-}
-
-.spinner {
-    border: 8px solid #ffffff;
-    border-top: 8px solid #000000;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
 /* Vidéo de fond */
 video#background-video {
     position: fixed;
@@ -55,7 +27,7 @@ video#background-video {
     width: auto;
     height: auto;
     position: absolute;
-    transition: transform 1s ease;
+    transition: transform 0.8s ease; /* Accélère l'animation de rotation */
 }
 
 /* Masquer `centre_double` au départ */
@@ -66,8 +38,8 @@ video#background-video {
 /* Affiche uniquement la moitié droite de centre_double */
 #centre_double {
     clip-path: inset(0 0 0 50%);
-    transform: translateX(-25%); /* Centre la moitié droite de `centre_double` */
-    transition: opacity 0.5s ease; /* Transition d’opacité pour apparition fluide */
+    transform: translateX(-25%);
+    transition: opacity 0.3s ease; /* Accélère la transition d'opacité */
     opacity: 0; /* Masqué au départ */
 }
 
@@ -75,6 +47,7 @@ video#background-video {
 .open-book {
     transform-origin: left;
     transform: rotateY(180deg); /* Ouvre de droite à gauche */
+    transition: transform 0.8s ease; /* Accélère l'ouverture */
 }
 
 /* Style pour le bouton de lecture de la musique */
