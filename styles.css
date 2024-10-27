@@ -5,16 +5,17 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #fddde6;
+    background-color: #fddde6; /* Fond rose pale */
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 100;
+    z-index: 100; /* Toujours au-dessus */
 }
 
+/* Spinner - cercle qui tourne */
 .spinner {
-    border: 8px solid #ffffff;
-    border-top: 8px solid #000000;
+    border: 8px solid #ffffff; /* Couleur de l'anneau : blanc */
+    border-top: 8px solid #000000; /* Couleur du bord actif : noir */
     border-radius: 50%;
     width: 60px;
     height: 60px;
@@ -26,75 +27,52 @@
     100% { transform: rotate(360deg); }
 }
 
-/* Vidéo de fond */
-#background-video {
+/* Style pour la vidéo de fond */
+video {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-    z-index: -1;
+    z-index: -1; /* Place la vidéo derrière les autres éléments */
 }
 
-/* Musique */
-.music-button {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    z-index: 10;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    opacity: 0.7;
-    transition: opacity 0.3s ease;
-}
-
-.music-button:hover {
-    opacity: 1;
-}
-
-/* Conteneur de la carte */
+/* Conteneur pour la carte */
 .card-container {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    width: 100vw;
-}
-
-.card-img {
-    width: 60%;
+    width: 50vw; /* Ajusté pour être la moitié de l'écran */
     height: auto;
-    transition: transform 1s ease-in-out;
+    z-index: 1;
+    transition: transform 1s ease;
 }
 
-.hidden {
-    display: none;
+/* Style pour les pages du centre */
+.page {
+    position: absolute;
+    top: 50%;
+    width: 50vw;
+    height: auto;
+    transform: translateY(-50%);
+    transition: transform 1s ease;
 }
 
-/* Animation de bouton */
-.action-button {
-    position: fixed;
-    width: 150px;
-    opacity: 0.7;
-    display: none;
-    cursor: pointer;
-    transition: opacity 0.3s ease;
+#centre-gauche {
+    left: 25%; /* Aligné pour la moitié gauche */
+    transform-origin: right;
 }
 
-#download-button {
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+#centre-droite {
+    left: 75%; /* Aligné pour la moitié droite */
+    transform-origin: left;
 }
 
-#answer-button {
-    top: 65%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.action-button:hover {
-    opacity: 1;
+/* Style de la carte et des pages */
+.card-img {
+    width: 100%;
+    height: auto;
+    backface-visibility: hidden;
 }
