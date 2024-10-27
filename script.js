@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const centreDouble = document.getElementById('centre_double');
 
-    // Ajoute la classe pour déclencher l'animation au clic
+    // Ajoute un décalage instantané au clic
     centreDouble.addEventListener('click', function() {
-        centreDouble.classList.toggle('slide-left'); // Applique le glissement
+        centreDouble.style.left = "-100vw"; // Décale instantanément l'image vers la gauche
     });
 });
