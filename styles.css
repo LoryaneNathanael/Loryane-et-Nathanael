@@ -28,6 +28,6 @@
 
 /* Nouvelle position pour afficher la moitié gauche de centre_double */
 .slide-left {
-    transform: translateX(-50%); /* Glisse vers la droite pour afficher la moitié gauche */
+    transform: translateX(-50vw); /* Glisse vers la droite pour afficher la moitié gauche */
     clip-path: inset(0 50% 0 0); /* Affiche uniquement la moitié gauche */
 }
