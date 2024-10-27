@@ -3,8 +3,8 @@ video#background-video {
     position: fixed;
     top: 0;
     left: 0;
-    max-width: 100%;
-	height: auto;
+    width: 100%;
+    height:auto;
     object-fit: cover;
     z-index: -1;
 }
@@ -12,16 +12,16 @@ video#background-video {
 /* Conteneur pour tester le glissement */
 .book-container {
     position: relative;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height:auto;
     overflow: hidden;
     display: flex;
 }
 
 /* Images de la carte */
 .card-img {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height:auto;
     position: absolute;
     top: 0;
     transition: transform 1s ease;
@@ -29,12 +29,12 @@ video#background-video {
 
 /* Masquer centre_gauche au départ, placé à gauche */
 .hidden {
-    transform: translateX(-100vw); /* Position initiale de centre_gauche, hors de l'écran à gauche */
+    transform: translateX(-100%); /* Position initiale de centre_gauche, hors de l'écran à gauche */
 }
 
 /* Glissement de centre_droite vers la droite */
 .slide-out-right {
-    transform: translateX(100vw); /* Fait sortir complètement centre_droite vers la droite */
+    transform: translateX(100%); /* Fait sortir complètement centre_droite vers la droite */
 }
 
 /* Glissement de centre_gauche vers le centre */
