@@ -3,12 +3,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const playMusicButton = document.getElementById('play-music');
     const cover = document.querySelector('.book-cover');
     const centreDroite = document.getElementById('centre_droite');
-    const centreGauche = document.getElementById('centre_gauche');
     let step = 1;
 
     // Charger les images
     function preloadImages(callback) {
-        const images = ['exterieur_recto.png', 'centre_droite.png', 'centre_gauche.png'];
+        const images = ['exterieur_recto.png', 'centre_droite.png'];
         let loadedImages = 0;
 
         images.forEach((src) => {
@@ -31,16 +30,15 @@ document.addEventListener('DOMContentLoaded', function() {
         backgroundMusic.play();
     });
 
-    // Animation d'ouverture
+    // Animation de glissement pour centre_droite
     cover.addEventListener('click', function() {
         if (step === 1) {
             cover.style.transform = 'rotateY(-180deg)'; // Ouvre la couverture
             centreDroite.style.display = 'block'; // Affiche l'intérieur (centre_droite)
             step++;
         } else if (step === 2) {
-            // Étape 2 : Déclenche les animations de glissement
-            centreDroite.classList.add('slide-right'); // Déplace centre_droite vers la droite
-            centreGauche.classList.add('slide-left'); // Fait apparaître centre_gauche en glissant depuis la gauche
+            // Fait glisser centre_droite vers la droite
+            centreDroite.classList.add('slide-out-right');
             step++;
         }
     });
