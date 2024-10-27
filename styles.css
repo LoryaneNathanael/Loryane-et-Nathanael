@@ -16,26 +16,28 @@ video#background-video {
     height: 100vh;
     overflow: hidden;
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-/* Images de la carte avec proportions respectées */
+/* Images de la carte */
 .card-img {
-    max-width: 100vw; /* Limite la largeur de l'image */
-    max-height: 100vh; /* Limite la hauteur de l'image */
-    width: auto;
-    height: auto;
-    transition: transform 1s ease;
+    width: 100vw;
+    height: 100vh;
     position: absolute;
+    top: 0;
+    transition: transform 1s ease;
+}
+
+/* Masquer centre_gauche au départ, placé à gauche */
+.hidden {
+    transform: translateX(-100vw); /* Position initiale de centre_gauche, hors de l'écran à gauche */
 }
 
 /* Glissement de centre_droite vers la droite */
 .slide-out-right {
-    transform: translateX(100vw);
+    transform: translateX(100vw); /* Fait sortir complètement centre_droite vers la droite */
 }
 
 /* Glissement de centre_gauche vers le centre */
 .slide-in-left {
-    transform: translateX(0);
+    transform: translateX(0); /* Place centre_gauche au centre de l'écran */
 }
