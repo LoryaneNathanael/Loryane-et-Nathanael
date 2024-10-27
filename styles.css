@@ -11,11 +11,6 @@
 
 /* Image de la carte */
 #centre_double {
-    width: 100vw; /* Affiche toute l’image */
-    transition: transform 1s ease; /* Transition pour le glissement */
-}
-
-/* Glissement appliqué par défaut */
-.slide-left {
-    transform: translateX(-100vw); /* Glisse vers la gauche */
+    max-width: 100%;
+    height: auto;
 }
