@@ -1,44 +1,27 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const exteriorCard = document.getElementById('card-exterior');
+    const doubleCard = document.getElementById('card-double');
+    const downloadButton = document.getElementById('download-button');
+    const answerButton = document.getElementById('answer-button');
     const backgroundMusic = document.getElementById('background-music');
     const playMusicButton = document.getElementById('play-music');
-    const coverLeft = document.querySelector('.book-cover-left');
-    const coverRight = document.querySelector('.book-cover-right');
-    const inner = document.querySelector('.book-inner');
+
     let step = 1;
 
-    // Charger les images
-    function preloadImages(callback) {
-        const images = ['extérieur_recto_left.png', 'extérieur_recto_right.png', 'centre_double.png'];
-        let loadedImages = 0;
-
-        images.forEach((src) => {
-            const img = new Image();
-            img.src = src;
-            img.onload = () => {
-                loadedImages++;
-                if (loadedImages === images.length) callback();
-            };
-        });
-    }
-
-    preloadImages(() => {
-        document.getElementById('loader').style.display = 'none';
-        document.getElementById('background-video').style.display = 'block';
-    });
-
     // Musique
-    playMusicButton.addEventListener('click', function() {
+    playMusicButton.addEventListener('click', () => {
         backgroundMusic.play();
     });
 
-    // Animation d'ouverture de la carte
-    coverLeft.addEventListener('click', function() {
+    // Animation d'ouverture de carte
+    exteriorCard.addEventListener('click', function() {
         if (step === 1) {
-            coverLeft.style.transform = 'rotateY(-180deg)'; // Ouvre la moitié gauche
-            coverRight.style.transform = 'rotateY(180deg)'; // Ouvre la moitié droite
+            exteriorCard.style.transform = 'perspective(1000px) rotateY(-180deg)'; // Effet d'ouverture de livre
             setTimeout(() => {
-                inner.style.transform = 'scaleX(1)'; // Révèle le centre double
-            }, 500); // Délai pour synchroniser l'animation
+                exteriorCard.classList.add('hidden'); // Cache la couverture
+                doubleCard.classList.remove('hidden'); // Affiche l'intérieur
+                doubleCard.style.transform = 'perspective(1000px) rotateY(0deg)'; // Ouverture vers l'intérieur
+            }, 1000); // Après l'animation de 1 seconde
             step++;
         }
     });
