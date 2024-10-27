@@ -57,8 +57,8 @@ video {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40vw;
-    height: 40vw; /* carré adaptable */
+    width: 30vw; /* Taille réduite */
+    height: auto;
     transition: transform 1s ease;
 }
 
@@ -67,8 +67,8 @@ video {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 40vw;
-    height: 40vw;
+    width: 30vw; /* Taille réduite */
+    height: auto;
     transform: translate(-50%, -50%);
     transition: transform 1s ease;
 }
