@@ -9,7 +9,7 @@ video#background-video {
     z-index: -1; /* Place la vidéo derrière les autres éléments */
 }
 
-/* Conteneur pour l'animation de la carte */
+/* Conteneur pour tester le glissement */
 .book-container {
     position: relative;
     width: 300px;
@@ -17,29 +17,13 @@ video#background-video {
     z-index: 1;
 }
 
-.book-cover, .book-inner {
-    position: absolute;
+.card-img {
     width: 100%;
-    height: 100%;
-    transition: transform 1s ease;
-}
-
-.book-cover {
-    transform-origin: left;
-    z-index: 2;
-}
-
-.book-inner {
-    transform: none;
-    z-index: 1;
+    height: auto;
+    transition: transform 1s ease; /* Transition de glissement */
 }
 
 /* Animation de glissement vers la droite */
 .slide-out-right {
     transform: translateX(300px); /* Fait sortir l'image vers la droite */
-}
-
-.card-img {
-    width: 100%;
-    height: auto;
 }
