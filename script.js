@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 exterieurRecto.style.display = 'none'; // Cache `exterieur_recto`
                 centreDouble.classList.remove('hidden'); // Affiche `centre_double`
-                centreDouble.style.left = '50%'; // Place la moitié droite de `centre_double` au centre
+                centreDouble.style.left = '50%'; // Positionne la moitié droite de `centre_double` au centre
             }, 500); // Temporisation pour l'effet d'ouverture
             step++;
         }
