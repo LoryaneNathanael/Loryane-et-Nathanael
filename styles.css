@@ -48,7 +48,7 @@ body {
 /* Conteneur pour l'animation de la carte */
 .book-container {
     position: relative;
-    width: 400px; /* Taille de la carte */
+    width: 400px; /* Ajusté pour correspondre à centre_double */
     height: auto;
     perspective: 1000px;
 }
@@ -67,7 +67,8 @@ body {
 }
 
 .book-inner {
-    transform: rotateY(-180deg); /* Cache l'intérieur au départ */
+    transform: scaleX(0); /* Cache l'intérieur au départ */
+    transform-origin: left; /* Permet un dépliement de droite à gauche */
 }
 
 .card-img {
