@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const centreDouble = document.getElementById('centre_double');
 
-    // Clic pour déclencher l'animation de glissement
+    // Ajoute la classe pour déclencher l'animation au clic
     centreDouble.addEventListener('click', function() {
-        centreDouble.classList.toggle('slide-left'); // Applique le glissement
+        centreDouble.classList.toggle('slide-left'); // Applique la classe de glissement
     });
 });
