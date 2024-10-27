@@ -1,65 +1,17 @@
-/* Style pour le loader */
-#loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #fddde6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-}
-
-.spinner {
-    border: 8px solid #ffffff;
-    border-top: 8px solid #000000;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Vidéo de fond */
-video#background-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    z-index: -1; /* Vidéo en arrière-plan */
-}
-
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #fddde6;
-}
-
-/* Conteneur pour l'animation de la carte */
+/* Style de base pour la carte */
 .book-container {
     position: relative;
-    width: 300px; /* Taille ajustée */
+    width: 300px; 
     height: auto;
     perspective: 1000px;
-    z-index: 1; /* La carte au-dessus de la vidéo */
+    z-index: 1;
 }
 
 .book-cover, .book-inner, .book-left {
     position: absolute;
     width: 100%;
     height: 100%;
-    transition: transform 1.5s ease; /* Transition uniforme */
+    transition: transform 1s ease, opacity 1s ease;
     backface-visibility: hidden;
 }
 
@@ -69,15 +21,21 @@ body {
 }
 
 .book-inner {
-    transform: none;
     z-index: 1;
 }
 
 .book-left {
-    display: none; /* Masqué au départ */
+    display: none;
 }
 
-.card-img {
-    width: 100%;
-    height: auto;
+/* Animation de glissement */
+.slide-right {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.slide-left {
+    display: block;
+    transform: translateX(0%);
+    opacity: 1;
 }
