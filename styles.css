@@ -44,15 +44,19 @@ video {
     height: 100vh;
 }
 
-.card-img, .page {
+.card-img {
     width: 40vw;
     height: auto;
     backface-visibility: hidden;
+    transition: transform 1s ease;
 }
 
 .page {
+    width: 40vw;
+    height: auto;
     position: absolute;
     transition: transform 1s ease;
+    backface-visibility: hidden;
 }
 
 #centre-gauche {
