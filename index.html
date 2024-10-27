@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loryane et Nathanael</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Inclusion de jsPDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </head>
 <body>
@@ -17,13 +16,11 @@
     <!-- Vidéo de fond -->
     <video autoplay muted loop playsinline id="background-video" style="display: none;">
         <source src="background.mp4" type="video/mp4">
-        Votre navigateur ne supporte pas les vidéos HTML5.
     </video>
 
     <!-- Musique de fond avec un bouton de lecture -->
     <audio id="background-music" loop>
         <source src="musique.mp3" type="audio/mp3">
-        Votre navigateur ne supporte pas l'élément audio.
     </audio>
 
     <!-- Bouton lecture musique en image -->
@@ -32,10 +29,13 @@
     <!-- Conteneur pour l'animation de carte -->
     <div class="book-container">
         <div class="book-cover">
-            <img src="exterieur_recto.png" alt="Carte recto extérieur" class="card-img" id="cover">
+            <img src="extérieur_recto.png" alt="Carte recto extérieur" class="card-img" id="cover">
         </div>
         <div class="book-inner">
-            <img src="centre_droite.png" alt="Carte intérieure" class="card-img" id="inner">
+            <img src="centre_droite.png" alt="Carte intérieure droite" class="card-img" id="centre_droite">
+        </div>
+        <div class="book-left hidden">
+            <img src="centre_gauche.png" alt="Carte intérieure gauche" class="card-img" id="centre_gauche">
         </div>
     </div>
 
