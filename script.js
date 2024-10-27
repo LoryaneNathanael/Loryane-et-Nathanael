@@ -13,18 +13,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Animation au clic pour montrer `centre_double`
     exterieurRecto.addEventListener('click', function() {
         if (step === 1) {
-            // Affiche immédiatement `centre_double` mais avec une opacité réduite
+            // Affiche immédiatement `centre_double` avec une opacité réduite
             centreDouble.classList.remove('hidden');
             centreDouble.style.opacity = '0';
 
             // Applique l'effet d'ouverture sur `exterieur_recto`
             exterieurRecto.classList.add('open-book');
 
-            // Graduellement augmenter l'opacité de `centre_double`
+            // Augmente l'opacité de `centre_double` plus rapidement
             setTimeout(() => {
                 centreDouble.style.opacity = '1';
-                exterieurRecto.style.display = 'none'; // Cache `exterieur_recto` une fois l'effet terminé
-            }, 500); // Réduit le délai pour rendre la transition fluide
+                exterieurRecto.style.display = 'none'; // Cache `exterieur_recto`
+            }, 400); // Délai réduit pour synchroniser
             step++;
         }
     });
