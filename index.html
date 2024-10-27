@@ -26,14 +26,17 @@
 
     <img src="play.png" id="play-music" alt="Jouer la musique" class="music-button">
 
-    <!-- Carte interactive fermée -->
+    <!-- Carte fermée (première image) -->
     <div class="card-container" id="card-container">
         <img src="exterieur_recto.png" alt="Carte extérieur" class="card-img" id="card">
     </div>
 
-    <!-- Carte intérieure dépliée -->
-    <div class="book-pages" id="book-pages" style="display: none;">
-        <img src="centre_double.png" alt="Centre double" class="card-img" id="centre-double">
+    <!-- Pages intérieure droite et gauche -->
+    <div id="centre-droit" class="page hidden">
+        <img src="centre_droite.png" alt="Centre droite" class="card-img">
+    </div>
+    <div id="centre-gauche" class="page hidden">
+        <img src="centre_gauche.png" alt="Centre gauche" class="card-img">
     </div>
 
     <script src="script.js"></script>
