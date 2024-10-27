@@ -40,8 +40,10 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (step === 2) {
             // Étape 2 : Glissement de centre_droite et apparition de centre_gauche
             centreDroite.style.transform = 'translateX(100%)'; // Déplace centre_droite vers la droite
-            centreGauche.classList.remove('hidden'); // Affiche centre_gauche
-            centreGauche.style.transform = 'translateX(0)'; // Centre centre_gauche
+            centreGauche.style.display = 'block'; // Affiche centre_gauche
+            setTimeout(() => {
+                centreGauche.style.transform = 'translateX(0)'; // Centre centre_gauche
+            }, 100); // Délai léger pour synchroniser l'animation
             step++;
         }
     });
