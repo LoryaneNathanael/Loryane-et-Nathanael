@@ -11,12 +11,11 @@
 
 /* Image de la carte */
 #centre_double {
-    width: 100vw; /* Affiche toute l’image au départ */
+    width: 100vw; /* Affiche toute l’image */
     transition: transform 1s ease; /* Transition pour le glissement */
-    transform: translateX(0); /* Position initiale */
 }
 
-/* Classe de glissement */
+/* Glissement appliqué par défaut */
 .slide-left {
-    transform: translateX(-100vw); /* Glissement vers la gauche */
+    transform: translateX(-100vw); /* Glisse vers la gauche */
 }
