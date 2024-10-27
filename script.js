@@ -1,64 +1,67 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const cardRecto = document.getElementById('card-recto');
-    const cardDouble = document.getElementById('card-double');
-    const cardSimple = document.getElementById('card-simple');
-    const henneRecto = document.getElementById('henne-recto');
-    const henneVerso = document.getElementById('henne-verso');
-    const cardBack = document.getElementById('card-back');
+    const cardContainer = document.querySelector('.card-container');
+    const card = document.getElementById('card');
     const downloadButton = document.getElementById('download-button');
     const answerButton = document.getElementById('answer-button');
     const backgroundMusic = document.getElementById('background-music');
+    const loader = document.getElementById('loader');
+    const backgroundVideo = document.getElementById('background-video');
     let step = 1;
 
-    // Bouton pour démarrer la musique
-    document.getElementById('play-music').addEventListener('click', function() {
-        if (backgroundMusic.paused) {
-            backgroundMusic.play();
-        } else {
-            backgroundMusic.pause();
-        }
+    // Précharger les images
+    function preloadImages(callback) {
+        const images = ['extérieur_recto.png', 'centre_double.png', 'centre_simple.png', 'henné_recto.png', 'henné_verso.png', 'arrière.png'];
+        let loadedImages = 0;
+
+        images.forEach((src) => {
+            const img = new Image();
+            img.src = src;
+            img.onload = () => {
+                loadedImages++;
+                if (loadedImages === images.length) callback();
+            };
+        });
+    }
+
+    preloadImages(() => {
+        loader.style.display = 'none';
+        cardContainer.style.display = 'block';
+        backgroundVideo.style.display = 'block';
     });
 
-    // Gérer la séquence d'animation de la carte
-    cardRecto.addEventListener('click', function() {
+    // Démarrage musique
+    document.getElementById('play-music').addEventListener('click', () => {
+        backgroundMusic.play();
+    });
+
+    cardContainer.addEventListener('click', function() {
         if (step === 1) {
-            cardRecto.classList.add('hidden');
-            cardDouble.classList.remove('hidden');
+            card.src = 'centre_double.png';
+            cardContainer.style.transform = 'scale(1.2) translateY(-10%)';
             step++;
         } else if (step === 2) {
-            cardDouble.classList.add('hidden');
-            cardSimple.classList.remove('hidden');
+            card.src = 'henné_recto.png';
+            cardContainer.style.transform = 'scale(1.5) translateY(0)';
             step++;
         } else if (step === 3) {
-            cardSimple.classList.add('hidden');
-            henneRecto.classList.remove('hidden');
+            card.src = 'centre_simple.png';
+            cardContainer.style.transform = 'scale(1.2)';
             step++;
         } else if (step === 4) {
-            henneRecto.classList.add('hidden');
-            henneVerso.classList.remove('hidden');
-            step++;
-        } else if (step === 5) {
-            henneVerso.classList.add('hidden');
-            cardBack.classList.remove('hidden');
-            downloadButton.classList.remove('hidden');
-            answerButton.classList.remove('hidden');
-            step++;
+            card.src = 'arrière.png';
+            downloadButton.style.display = 'block';
+            answerButton.style.display = 'block';
+            cardContainer.style.display = 'none';
         }
     });
 
-    // Redirection vers Google Form au clic sur "Réponse"
     answerButton.addEventListener('click', function() {
         window.location.href = 'https://forms.gle/XDoqUYNLDYwuiema9';
     });
 
-    // Fonction pour générer et télécharger le PDF
     downloadButton.addEventListener('click', function() {
         const { jsPDF } = window.jspdf;
-        const pdf = new jsPDF({
-            orientation: 'portrait',
-            unit: 'px',
-            format: [380, 380]
-        });
+        const pdf = new jsPDF({ orientation: 'portrait', unit: 'px', format: [380, 380] });
 
         pdf.addImage('extérieur_recto.png', 'PNG', 0, 0, 380, 380);
         pdf.addPage();
