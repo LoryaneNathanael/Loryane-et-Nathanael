@@ -3,6 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Ajoute la classe pour déclencher l'animation au clic
     centreDouble.addEventListener('click', function() {
-        centreDouble.classList.toggle('slide-left'); // Applique la classe de glissement
+        centreDouble.classList.toggle('slide-left'); // Applique le glissement
     });
 });
