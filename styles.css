@@ -5,17 +5,16 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #fddde6; /* Fond rose pale */
+    background-color: #fddde6;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 100; /* Toujours au-dessus */
+    z-index: 100;
 }
 
-/* Spinner - cercle qui tourne */
 .spinner {
-    border: 8px solid #ffffff; /* Couleur de l'anneau : blanc */
-    border-top: 8px solid #000000; /* Couleur du bord actif : noir */
+    border: 8px solid #ffffff;
+    border-top: 8px solid #000000;
     border-radius: 50%;
     width: 60px;
     height: 60px;
@@ -27,7 +26,6 @@
     100% { transform: rotate(360deg); }
 }
 
-/* Style pour la vidéo de fond */
 video {
     position: fixed;
     top: 0;
@@ -35,44 +33,34 @@ video {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-    z-index: -1; /* Place la vidéo derrière les autres éléments */
+    z-index: -1;
 }
 
-/* Conteneur pour la carte */
-.card-container {
-    position: relative;
+.card-container, .book-pages {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50vw; /* Ajusté pour être la moitié de l'écran */
-    height: auto;
-    z-index: 1;
-    transition: transform 1s ease;
+    width: 100vw;
+    height: 100vh;
 }
 
-/* Style pour les pages du centre */
+.card-img, .page {
+    width: 40vw;
+    height: auto;
+    backface-visibility: hidden;
+}
+
 .page {
     position: absolute;
-    top: 50%;
-    width: 50vw;
-    height: auto;
-    transform: translateY(-50%);
     transition: transform 1s ease;
 }
 
 #centre-gauche {
-    left: 25%; /* Aligné pour la moitié gauche */
     transform-origin: right;
+    transform: rotateY(180deg);
 }
 
 #centre-droite {
-    left: 75%; /* Aligné pour la moitié droite */
     transform-origin: left;
-}
-
-/* Style de la carte et des pages */
-.card-img {
-    width: 100%;
-    height: auto;
-    backface-visibility: hidden;
+    transform: rotateY(180deg);
 }
