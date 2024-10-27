@@ -62,7 +62,7 @@ video {
     transition: transform 1s ease;
 }
 
-/* Pages intérieures (droite et gauche) */
+/* Pages intérieures droite et gauche */
 .page {
     position: absolute;
     top: 50%;
@@ -78,5 +78,5 @@ video {
 }
 
 #card {
-    transform-origin: left;
+    transform-origin: left; /* Pour l'effet de retournement vers la gauche */
 }
