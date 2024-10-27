@@ -36,7 +36,6 @@ video {
     z-index: -1;
 }
 
-/* Musique */
 .music-button {
     position: fixed;
     top: 10px;
@@ -58,31 +57,26 @@ video {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50vw; 
-    height: auto;
-    transition: transform 1s ease;
-}
-
-/* Conteneur de la carte ouverte */
-.book-pages {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 50vw;
     height: auto;
+    transition: transform 1s ease;
 }
 
-.card-img {
-    width: 100%;
+/* Pages intérieures (droite et gauche) */
+.page {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50vw;
     height: auto;
-    backface-visibility: hidden;
+    transform: translate(-50%, -50%);
     transition: transform 1s ease;
+}
+
+.hidden {
+    display: none;
 }
 
 #card {
-    transform-origin: left; /* Point de départ pour l’ouverture */
-}
-
-#centre-double {
-    transform-origin: right; /* Point d'ancrage de l'image centrale */
+    transform-origin: left;
 }
