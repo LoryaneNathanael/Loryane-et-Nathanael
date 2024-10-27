@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loryane et Nathanael</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Inclusion de jsPDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </head>
 <body>
@@ -16,6 +17,7 @@
     <!-- Vidéo de fond -->
     <video autoplay muted loop playsinline id="background-video" style="display: none;">
         <source src="background.mp4" type="video/mp4">
+        Votre navigateur ne supporte pas les vidéos HTML5.
     </video>
 
     <!-- Musique de fond avec un bouton de lecture -->
@@ -29,25 +31,10 @@
     <!-- Conteneur pour l'animation de carte -->
     <div class="book-container">
         <div class="book-cover">
-            <img src="exterieur_recto.png" alt="Carte recto exterieur" class="card-img" id="cover">
+            <img src="exterieur_recto.png" alt="Carte recto extérieur" class="card-img" id="cover">
         </div>
         <div class="book-inner">
             <img src="centre_droite.png" alt="Carte intérieure droite" class="card-img" id="centre_droite">
         </div>
         <div class="book-left hidden">
-            <img src="centre_gauche.png" alt="Carte intérieure gauche" class="card-img" id="centre_gauche">
-        </div>
-    </div>
-
-    <!-- Inclusion du script JS -->
-    <script src="script.js"></script>
-
-    <!-- Script pour le loader -->
-    <script>
-        window.addEventListener('load', function() {
-            document.getElementById('loader').style.display = 'none';
-            document.getElementById('background-video').style.display = 'block';
-        });
-    </script>
-</body>
-</html>
+            <img src="centre_gauche.png" alt="Carte intérieure gau
