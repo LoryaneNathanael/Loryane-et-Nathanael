@@ -30,11 +30,13 @@ document.addEventListener('DOMContentLoaded', function() {
         backgroundMusic.play();
     });
 
-    // Animation d'ouverture
+    // Animation d'ouverture de la carte
     cover.addEventListener('click', function() {
         if (step === 1) {
             cover.style.transform = 'rotateY(-180deg)'; // Ouvre la couverture
-            inner.style.transform = 'rotateY(0deg)'; // Affiche l'intérieur
+            setTimeout(() => {
+                inner.style.transform = 'scaleX(1)'; // Déplie l'intérieur de droite à gauche
+            }, 500); // Délai pour synchroniser l'animation
             step++;
         }
     });
