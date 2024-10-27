@@ -27,21 +27,17 @@ video#background-video {
     transition: transform 1s ease;
 }
 
-/* Positionnement initial des images */
-.card-img.left {
-    transform: translateX(-100vw); /* Image de gauche, hors de l’écran */
+/* Masquer centre_gauche au départ, placé à gauche */
+.hidden {
+    transform: translateX(-100vw); /* Position initiale de centre_gauche, hors de l'écran à gauche */
 }
 
-.card-img.right {
-    transform: translateX(0); /* Image de droite, dans l’écran */
-}
-
-/* Animation pour faire glisser l'image de gauche vers le centre */
-.slide-in-left {
-    transform: translateX(0); /* Amène l’image de gauche dans l’écran */
-}
-
-/* Animation pour faire glisser l'image de droite vers la droite */
+/* Glissement de centre_droite vers la droite */
 .slide-out-right {
-    transform: translateX(100vw); /* Fait glisser l’image de droite vers l'extérieur */
+    transform: translateX(100vw); /* Fait sortir complètement centre_droite vers la droite */
+}
+
+/* Glissement de centre_gauche vers le centre */
+.slide-in-left {
+    transform: translateX(0); /* Place centre_gauche au centre de l'écran */
 }
