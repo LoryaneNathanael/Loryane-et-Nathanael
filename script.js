@@ -37,17 +37,31 @@ document.addEventListener('DOMContentLoaded', function() {
     cardContainer.addEventListener('click', function() {
         if (step === 1) {
             card.src = 'centre_double.png';
-            cardContainer.style.transform = 'scale(1.2) translateY(-10%)';
+            cardContainer.style.transform = 'rotateY(-90deg)'; // Ouvre la carte de gauche à droite
             step++;
         } else if (step === 2) {
             card.src = 'henné_recto.png';
-            cardContainer.style.transform = 'scale(1.5) translateY(0)';
+            card.style.position = 'absolute';
+            card.style.left = '10%';
+            card.style.bottom = '10%';
+            card.style.clipPath = 'inset(50% 0 0 0)';
             step++;
         } else if (step === 3) {
-            card.src = 'centre_simple.png';
-            cardContainer.style.transform = 'scale(1.2)';
+            card.style.clipPath = 'inset(0 0 0 0)';
+            card.style.transform = 'translateY(-20%)';
             step++;
         } else if (step === 4) {
+            card.style.transform = 'scale(1.5)';
+            step++;
+        } else if (step === 5) {
+            card.src = 'henné_verso.png';
+            card.style.transform = 'rotateY(180deg)';
+            step++;
+        } else if (step === 6) {
+            card.src = 'henné_recto.png';
+            card.style.transform = 'rotateY(0deg)';
+            step++;
+        } else if (step === 7) {
             card.src = 'arrière.png';
             downloadButton.style.display = 'block';
             answerButton.style.display = 'block';
