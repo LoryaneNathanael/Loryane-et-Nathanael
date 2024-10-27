@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loryane et Nathanael</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Inclusion de jsPDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </head>
 <body>
@@ -16,28 +17,37 @@
     <!-- Vidéo de fond -->
     <video autoplay muted loop playsinline id="background-video" style="display: none;">
         <source src="background.mp4" type="video/mp4">
+        Votre navigateur ne supporte pas les vidéos HTML5.
     </video>
 
     <!-- Musique de fond avec un bouton de lecture -->
     <audio id="background-music" loop>
         <source src="musique.mp3" type="audio/mp3">
+        Votre navigateur ne supporte pas l'élément audio.
     </audio>
 
-    <img src="play.png" id="play-music" alt="Jouer la musique" class="music-button">
+    <!-- Bouton lecture musique en image -->
+    <img src="play.png" id="play-music" alt="Jouer la musique" style="position: fixed; top: 10px; left: 10px; z-index: 10; width: 100px; height: 100px; cursor: pointer;">
 
-    <!-- Carte fermée (première image) -->
-    <div class="card-container" id="card-container">
-        <img src="exterieur_recto.png" alt="Carte extérieur" class="card-img" id="card">
+    <!-- Conteneur pour l'animation de carte -->
+    <div class="book-container">
+        <div class="book-cover">
+            <img src="extérieur_recto.png" alt="Carte recto extérieur" class="card-img" id="cover">
+        </div>
+        <div class="book-inner">
+            <img src="centre_double.png" alt="Carte intérieure" class="card-img" id="inner">
+        </div>
     </div>
 
-    <!-- Pages centre_droite et centre_gauche -->
-    <div id="centre-droit" class="page hidden">
-        <img src="centre_droite.png" alt="Centre droite" class="card-img">
-    </div>
-    <div id="centre-gauche" class="page hidden">
-        <img src="centre_gauche.png" alt="Centre gauche" class="card-img">
-    </div>
-
+    <!-- Inclusion du script JS -->
     <script src="script.js"></script>
+
+    <!-- Script pour le loader -->
+    <script>
+        window.addEventListener('load', function() {
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('background-video').style.display = 'block';
+        });
+    </script>
 </body>
 </html>
