@@ -1,32 +1,40 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const cardContainer = document.getElementById('card-container');
-    const card = document.getElementById('card');
-    const centreDroit = document.getElementById('centre-droit');
-    const centreGauche = document.getElementById('centre-gauche');
-    const playMusicButton = document.getElementById('play-music');
     const backgroundMusic = document.getElementById('background-music');
+    const playMusicButton = document.getElementById('play-music');
+    const cover = document.querySelector('.book-cover');
+    const inner = document.querySelector('.book-inner');
     let step = 1;
 
-    // Lancer la musique au clic sur le bouton
+    // Charger les images
+    function preloadImages(callback) {
+        const images = ['extérieur_recto.png', 'centre_double.png'];
+        let loadedImages = 0;
+
+        images.forEach((src) => {
+            const img = new Image();
+            img.src = src;
+            img.onload = () => {
+                loadedImages++;
+                if (loadedImages === images.length) callback();
+            };
+        });
+    }
+
+    preloadImages(() => {
+        document.getElementById('loader').style.display = 'none';
+        document.getElementById('background-video').style.display = 'block';
+    });
+
+    // Musique
     playMusicButton.addEventListener('click', function() {
         backgroundMusic.play();
     });
 
-    cardContainer.addEventListener('click', function() {
+    // Animation d'ouverture
+    cover.addEventListener('click', function() {
         if (step === 1) {
-            // Étape 1 : effet de retournement de la carte pour révéler centre_droite
-            card.style.transform = 'rotateY(-180deg)';
-            setTimeout(() => {
-                cardContainer.style.display = 'none';
-                centreDroit.classList.remove('hidden'); // Affiche centre_droite
-            }, 1000);
-            step++;
-        } else if (step === 2) {
-            // Étape 2 : centre_droite glisse vers la droite, centre_gauche apparaît
-            centreDroit.style.transform = 'translateX(30vw)'; // Déplacement vers la droite
-            setTimeout(() => {
-                centreGauche.classList.remove('hidden'); // Affiche centre_gauche
-            }, 500);
+            cover.style.transform = 'rotateY(-180deg)'; // Ouvre la couverture
+            inner.style.transform = 'rotateY(0deg)'; // Affiche l'intérieur
             step++;
         }
     });
