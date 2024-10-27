@@ -1,16 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const centreDroite = document.getElementById('centre_droite');
-    const centreGauche = document.getElementById('centre_gauche');
+    const cardWrapper = document.querySelector('.card-wrapper');
     let step = 1;
 
-    // Animation de glissement pour centre_droite et centre_gauche
-    centreDroite.addEventListener('click', function() {
+    // Animation de glissement pour card-wrapper
+    cardWrapper.addEventListener('click', function() {
         if (step === 1) {
-            // Fait glisser centre_droite vers la droite
-            centreDroite.classList.add('slide-out-right');
-            // Affiche et fait glisser centre_gauche depuis la gauche
-            centreGauche.classList.remove('hidden');
-            centreGauche.classList.add('slide-in-left');
+            // Fait glisser card-wrapper vers la droite
+            cardWrapper.classList.add('slide-out-right');
             step++;
         }
     });
