@@ -8,42 +8,32 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </head>
 <body>
-    <!-- Loader de chargement -->
     <div id="loader">
         <div class="spinner"></div>
     </div>
 
-    <!-- Vidéo de fond -->
     <video autoplay muted loop playsinline id="background-video" style="display: none;">
         <source src="background.mp4" type="video/mp4">
         Votre navigateur ne supporte pas les vidéos HTML5.
     </video>
 
-    <!-- Musique de fond avec un bouton de lecture -->
     <audio id="background-music" loop>
         <source src="musique.mp3" type="audio/mp3">
         Votre navigateur ne supporte pas l'élément audio.
     </audio>
 
-    <!-- Bouton lecture musique en image -->
-    <img src="play.png" id="play-music" alt="Jouer la musique" style="position: fixed; top: 10px; left: 10px; z-index: 10; width: 100px; height: 100px; cursor: pointer;">
+    <img src="play.png" id="play-music" alt="Jouer la musique" class="music-button">
 
-    <!-- Conteneur pour l'animation de la carte -->
-    <div class="book-container">
-        <div class="book-cover-left">
-            <img src="extérieur_recto_left.png" alt="Carte recto extérieur gauche" class="card-img">
-        </div>
-        <div class="book-cover-right">
-            <img src="extérieur_recto_right.png" alt="Carte recto extérieur droite" class="card-img">
-        </div>
-        <div class="book-inner">
-            <img src="centre_double.png" alt="Carte intérieure" class="card-img" id="inner">
-        </div>
+    <div class="card-container">
+        <img src="extérieur_recto.png" alt="Carte extérieure" class="card-img" id="card-exterior">
+        <img src="centre_double.png" alt="Carte intérieure" class="card-img hidden" id="card-double">
     </div>
+
+    <img src="telechargement.png" id="download-button" alt="Télécharger l'invitation" class="action-button hidden">
+    <img src="answer.png" id="answer-button" alt="Répondre à l'invitation" class="action-button hidden">
 
     <script src="script.js"></script>
 
-    <!-- Script pour le loader -->
     <script>
         window.addEventListener('load', function() {
             document.getElementById('loader').style.display = 'none';
