@@ -12,6 +12,13 @@
 /* Image de la carte */
 #centre_double {
     width: auto;
-    height: 100vh; /* Ajuste l'image pour qu'elle prenne toute la hauteur de l'écran */
-    object-fit: contain; /* Garde les proportions sans rognage */
+    height: 100vh;
+    object-fit: contain;
+    transition: transform 1s ease; /* Transition pour le glissement */
+    transform: translateX(0); /* Position initiale */
+}
+
+/* Classe pour déclencher le glissement */
+.slide-left {
+    transform: translateX(-100vw); /* Glisse l'image vers la gauche */
 }
