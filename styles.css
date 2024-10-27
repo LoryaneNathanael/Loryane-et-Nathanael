@@ -1,10 +1,20 @@
+/* Vidéo de fond */
+video#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1; /* Place la vidéo derrière les autres éléments */
+}
+
 /* Conteneur pour l'animation de la carte */
 .book-container {
     position: relative;
-    width: 300px; /* Taille ajustée */
+    width: 300px;
     height: auto;
-    perspective: 1000px;
-    z-index: 1; /* Place la carte devant la vidéo */
+    z-index: 1;
 }
 
 .book-cover, .book-inner {
@@ -12,7 +22,6 @@
     width: 100%;
     height: 100%;
     transition: transform 1s ease;
-    backface-visibility: hidden;
 }
 
 .book-cover {
@@ -27,7 +36,7 @@
 
 /* Animation de glissement vers la droite */
 .slide-out-right {
-    transform: translateX(100%); /* Fait sortir l'image vers la droite */
+    transform: translateX(300px); /* Fait sortir l'image vers la droite */
 }
 
 .card-img {
