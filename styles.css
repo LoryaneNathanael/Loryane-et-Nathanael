@@ -67,7 +67,7 @@ body {
 }
 
 .book-inner {
-    transform: rotateY(-180deg); /* Cache l'intérieur au départ */
+    transform: none; /* Suppression de la rotation pour une simple apparition */
 }
 
 .card-img {
