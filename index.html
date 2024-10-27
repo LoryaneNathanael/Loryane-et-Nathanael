@@ -8,35 +8,47 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </head>
 <body>
+    <!-- Loader de chargement -->
     <div id="loader">
         <div class="spinner"></div>
     </div>
 
+    <!-- Vidéo de fond -->
     <video autoplay muted loop playsinline id="background-video" style="display: none;">
         <source src="background.mp4" type="video/mp4">
         Votre navigateur ne supporte pas les vidéos HTML5.
     </video>
 
+    <!-- Musique de fond avec un bouton de lecture -->
     <audio id="background-music" loop>
         <source src="musique.mp3" type="audio/mp3">
         Votre navigateur ne supporte pas l'élément audio.
     </audio>
 
-    <img src="play.png" id="play-music" alt="Jouer la musique" class="music-button">
+    <!-- Bouton lecture musique en image -->
+    <img src="play.png" id="play-music" alt="Jouer la musique" style="position: fixed; top: 10px; left: 10px; z-index: 10; width: 100px; height: 100px; cursor: pointer;">
 
-    <div class="card-container">
-        <img src="extérieur_recto.png" alt="Carte extérieure" class="card-img" id="card-exterior">
-        <img src="centre_double.png" alt="Carte intérieure" class="card-img hidden" id="card-double">
+    <!-- Carte interactive -->
+    <div class="card-container" id="card-container" style="display: none;">
+        <img src="exterieur_recto.png" alt="Carte extérieur" class="card-img" id="card">
     </div>
 
-    <img src="telechargement.png" id="download-button" alt="Télécharger l'invitation" class="action-button hidden">
-    <img src="answer.png" id="answer-button" alt="Répondre à l'invitation" class="action-button hidden">
+    <!-- Les deux pages du centre à afficher lors de l'ouverture -->
+    <div id="centre-gauche" class="page" style="display: none;">
+        <img src="centre_gauche.png" alt="Centre gauche" class="card-img">
+    </div>
+    <div id="centre-droite" class="page" style="display: none;">
+        <img src="centre_droite.png" alt="Centre droite" class="card-img">
+    </div>
 
+    <!-- Inclusion du script JS -->
     <script src="script.js"></script>
 
+    <!-- Script pour le loader -->
     <script>
         window.addEventListener('load', function() {
             document.getElementById('loader').style.display = 'none';
+            document.getElementById('card-container').style.display = 'block';
             document.getElementById('background-video').style.display = 'block';
         });
     </script>
