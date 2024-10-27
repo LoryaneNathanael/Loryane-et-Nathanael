@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loryane et Nathanael</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Inclusion de jsPDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </head>
 <body>
@@ -15,12 +14,10 @@
     </div>
 
     <!-- Vidéo de fond -->
-    <div id="video-container">
-        <video autoplay muted loop playsinline id="background-video">
-            <source src="background.mp4" type="video/mp4">
-            Votre navigateur ne supporte pas les vidéos HTML5.
-        </video>
-    </div>
+    <video autoplay muted loop playsinline id="background-video" style="display: none;">
+        <source src="background.mp4" type="video/mp4">
+        Votre navigateur ne supporte pas les vidéos HTML5.
+    </video>
 
     <!-- Musique de fond avec un bouton de lecture -->
     <audio id="background-music" loop>
@@ -29,23 +26,18 @@
     </audio>
 
     <!-- Bouton lecture musique en image -->
-    <img src="play.png" id="play-music" alt="Jouer la musique" class="control-button">
+    <img src="play.png" id="play-music" alt="Jouer la musique" style="position: fixed; top: 10px; left: 10px; z-index: 10; width: 100px; height: 100px; cursor: pointer;">
 
     <!-- Carte interactive -->
-    <div class="card-container" style="display: none;">
-        <img src="extérieur_recto.png" alt="Carte recto" class="card-img hidden" id="card-recto">
-        <img src="centre_double.png" alt="Centre double" class="card-img hidden" id="card-double">
-        <img src="henné_recto.png" alt="Henné recto" class="card-img hidden" id="henne-recto">
-        <img src="henné_verso.png" alt="Henné verso" class="card-img hidden" id="henne-verso">
-        <img src="centre_simple.png" alt="Centre simple" class="card-img hidden" id="card-simple">
-        <img src="arrière.png" alt="Arrière" class="card-img hidden" id="card-back">
+    <div class="card-container" id="card-container" style="display: none;">
+        <img src="extérieur_recto.png" alt="Carte recto extérieur" class="card-img" id="card">
     </div>
 
     <!-- L'image de téléchargement (cachée au début) -->
-    <img src="telechargement.png" id="download-button" alt="Télécharger l'invitation" class="control-button hidden">
+    <img src="telechargement.png" id="download-button" alt="Télécharger l'invitation" style="display: none;">
 
     <!-- L'image de réponse (cachée au début) -->
-    <img src="answer.png" id="answer-button" alt="Répondre à l'invitation" class="control-button hidden">
+    <img src="answer.png" id="answer-button" alt="Répondre à l'invitation" style="display: none;">
 
     <!-- Inclusion du script JS -->
     <script src="script.js"></script>
@@ -54,8 +46,8 @@
     <script>
         window.addEventListener('load', function() {
             document.getElementById('loader').style.display = 'none';
-            document.getElementById('card-recto').classList.remove('hidden');
-            document.querySelector('.card-container').style.display = 'block';
+            document.getElementById('card-container').style.display = 'block';
+            document.getElementById('background-video').style.display = 'block';
         });
     </script>
 </body>
