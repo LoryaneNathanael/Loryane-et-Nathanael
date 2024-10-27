@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invitation Interactive</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
@@ -31,7 +30,9 @@
     <!-- Conteneur pour les images -->
     <div class="book-container">
         <img src="exterieur_recto.png" alt="Carte recto extérieur" class="card-img" id="exterieur_recto">
-        <img src="centre_double.png" alt="Carte intérieure double" class="card-img hidden" id="centre_double">
+        <div class="half-view">
+            <img src="centre_double.png" alt="Carte intérieure double" class="card-img hidden" id="centre_double">
+        </div>
     </div>
 
     <script src="script.js"></script>
