@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const cardContainer = document.getElementById('card-container');
     const card = document.getElementById('card');
-    const bookPages = document.getElementById('book-pages');
-    const centreDouble = document.getElementById('centre-double');
+    const centreDroit = document.getElementById('centre-droit');
+    const centreGauche = document.getElementById('centre-gauche');
     const playMusicButton = document.getElementById('play-music');
     const backgroundMusic = document.getElementById('background-music');
     let step = 1;
@@ -14,14 +14,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     cardContainer.addEventListener('click', function() {
         if (step === 1) {
-            // Ouvre la couverture vers la gauche
+            // Ouvre la couverture vers la gauche pour afficher centre_droit
             card.style.transform = 'rotateY(-180deg)';
-            
-            // Affiche le centre double après l’animation de la couverture
             setTimeout(() => {
                 cardContainer.style.display = 'none';
-                bookPages.style.display = 'flex';
-                centreDouble.style.transform = 'rotateY(0deg)';
+                centreDroit.classList.remove('hidden'); // Affiche centre_droit
+            }, 1000);
+
+            step++;
+        } else if (step === 2) {
+            // Glisse centre_droit vers la droite pour révéler centre_gauche
+            centreDroit.style.transform = 'translateX(50vw)';
+            setTimeout(() => {
+                centreGauche.classList.remove('hidden'); // Affiche centre_gauche
             }, 1000);
 
             step++;
