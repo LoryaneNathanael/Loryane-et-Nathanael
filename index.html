@@ -1,25 +1,46 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Glissement</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitation Interactive</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </head>
 <body>
-    <!-- Vidéo de fond -->
-    <video autoplay muted loop playsinline id="background-video">
-        <source src="background.mp4" type="video/mp4">
-    </video>
-
-    <!-- Conteneur pour centrer et superposer les images dans card-wrapper -->
-    <div class="book-container">
-        <div class="card-wrapper">
-            <img src="centre_droite.png" alt="Carte intérieure droite" class="card-img">
-            <img src="centre_gauche.png" alt="Carte intérieure gauche" class="card-img hidden">
-        </div>
+    <!-- Loader de chargement -->
+    <div id="loader">
+        <div class="spinner"></div>
     </div>
 
-    <!-- Inclusion du script JS -->
+    <!-- Vidéo de fond -->
+    <video autoplay muted loop playsinline id="background-video" style="display: none;">
+        <source src="background.mp4" type="video/mp4">
+        Votre navigateur ne supporte pas les vidéos HTML5.
+    </video>
+
+    <!-- Musique de fond avec un bouton de lecture -->
+    <audio id="background-music" loop>
+        <source src="musique.mp3" type="audio/mp3">
+        Votre navigateur ne supporte pas l'élément audio.
+    </audio>
+
+    <!-- Bouton lecture musique en image -->
+    <img src="play.png" id="play-music" alt="Jouer la musique" class="control-button">
+
+    <!-- Conteneur pour les images -->
+    <div class="book-container">
+        <img src="exterieur_recto.png" alt="Carte recto extérieur" class="card-img" id="exterieur_recto">
+        <img src="centre_double.png" alt="Carte intérieure double" class="card-img hidden" id="centre_double">
+    </div>
+
     <script src="script.js"></script>
+
+    <script>
+        window.addEventListener('load', function() {
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('background-video').style.display = 'block';
+        });
+    </script>
 </body>
 </html>
