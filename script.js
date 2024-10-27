@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const playMusicButton = document.getElementById('play-music');
     const exterieurRecto = document.getElementById('exterieur_recto');
     const centreDouble = document.getElementById('centre_double');
+    const halfView = document.querySelector('.half-view');
     let step = 1;
 
     // Démarrer la musique
@@ -16,8 +17,8 @@ document.addEventListener('DOMContentLoaded', function() {
             exterieurRecto.classList.add('open-book'); // Applique l'effet de livre
             setTimeout(() => {
                 exterieurRecto.style.display = 'none'; // Cache `exterieur_recto`
+                halfView.style.display = 'block'; // Affiche le conteneur `half-view`
                 centreDouble.classList.remove('hidden'); // Affiche `centre_double`
-                centreDouble.style.left = '50%'; // Positionne la moitié droite de `centre_double` au centre
             }, 500); // Temporisation pour l'effet d'ouverture
             step++;
         }
