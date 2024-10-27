@@ -36,37 +36,53 @@ video {
     z-index: -1;
 }
 
+/* Musique */
+.music-button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.music-button:hover {
+    opacity: 1;
+}
+
 /* Conteneur de la carte fermée */
 .card-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40vw;
-    height: auto;
-}
-
-/* Alignement des pages intérieures */
-.book-pages {
-    position: relative;
-    width: 80vw;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.card-img, .page {
-    width: 40vw;
+    width: 50vw; 
     height: auto;
     transition: transform 1s ease;
 }
 
-#centre-gauche {
-    transform-origin: right;
-    transform: rotateY(180deg); /* Initialisation pour l'effet fermé */
+/* Conteneur de la carte ouverte */
+.book-pages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: auto;
 }
 
-#centre-droite {
-    transform-origin: left;
-    transform: rotateY(180deg); /* Initialisation pour l'effet fermé */
+.card-img {
+    width: 100%;
+    height: auto;
+    backface-visibility: hidden;
+    transition: transform 1s ease;
+}
+
+#card {
+    transform-origin: left; /* Point de départ pour l’ouverture */
+}
+
+#centre-double {
+    transform-origin: right; /* Point d'ancrage de l'image centrale */
 }
