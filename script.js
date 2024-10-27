@@ -13,11 +13,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Animation au clic pour montrer `centre_double`
     exterieurRecto.addEventListener('click', function() {
         if (step === 1) {
-            exterieurRecto.classList.add('open-book'); // Applique l'effet de livre
+            // Affiche immédiatement `centre_double` mais avec une opacité réduite
+            centreDouble.classList.remove('hidden');
+            centreDouble.style.opacity = '0';
+
+            // Applique l'effet d'ouverture sur `exterieur_recto`
+            exterieurRecto.classList.add('open-book');
+
+            // Graduellement augmenter l'opacité de `centre_double`
             setTimeout(() => {
-                exterieurRecto.style.display = 'none'; // Cache `exterieur_recto`
-                centreDouble.classList.remove('hidden'); // Affiche `centre_double`
-            }, 1000); // Temporisation pour l'effet d'ouverture
+                centreDouble.style.opacity = '1';
+                exterieurRecto.style.display = 'none'; // Cache `exterieur_recto` une fois l'effet terminé
+            }, 500); // Réduit le délai pour rendre la transition fluide
             step++;
         }
     });
