@@ -9,28 +9,31 @@ document.addEventListener('DOMContentLoaded', function() {
     // Musique au clic sur le bouton de lecture
     playMusicButton.addEventListener('click', function() {
         backgroundMusic.play();
+        console.log("Musique lancée"); // Vérification musique
     });
 
-    // Animation d'ouverture et de glissement
+    // Premier clic : Animation d'ouverture de exterieur_recto
     exterieurRecto.addEventListener('click', function() {
         if (step === 1) {
-            // Ouvre exterieur_recto comme un livre
+            console.log("Premier clic détecté"); // Vérification premier clic
             exterieurRecto.classList.add('open-book');
             setTimeout(() => {
-                // Affiche centre_droite après l'ouverture
                 exterieurRecto.style.display = 'none';
                 centreDroite.classList.remove('hidden');
-            }, 1000); // Délai pour correspondre à la durée de l'ouverture
+                console.log("Ouverture terminée, centre_droite affichée"); // Vérification ouverture
+            }, 1000);
             step++;
         }
     });
 
-    // Deuxième clic pour le glissement entre centre_droite et centre_gauche
+    // Deuxième clic : Glissement de centre_droite et affichage de centre_gauche
     centreDroite.addEventListener('click', function() {
         if (step === 2) {
-            centreDroite.classList.add('slide-out-right'); // Glisse centre_droite vers la droite
+            console.log("Deuxième clic détecté"); // Vérification deuxième clic
+            centreDroite.classList.add('slide-out-right');
             centreGauche.classList.remove('hidden');
-            centreGauche.classList.add('slide-in-left'); // Affiche centre_gauche au centre
+            centreGauche.classList.add('slide-in-left');
+            console.log("Animation de glissement démarrée"); // Vérification glissement
             step++;
         }
     });
