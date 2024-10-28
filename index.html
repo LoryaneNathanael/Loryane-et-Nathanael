@@ -78,25 +78,108 @@
             z-index: 1;
         }
 
-        /* Style pour les boutons (Télécharger et Répondre) */
-        #download-button, #answer-button {
-            position: fixed;
-            width: 150px; /* Taille réduite des boutons */
-            height: auto;
-            opacity: 0.7;
-            display: none; /* Caché au début */
+        /* Styles pour les boutons après la fin de la vidéo */
+        #action-buttons {
+            display: none; /* Masqué jusqu'à la fin de la vidéo */
+            margin-top: 20px;
+        }
+
+        .action-button {
+            display: block;
+            margin: 10px auto;
             cursor: pointer;
-            transition: opacity 0.3s ease; /* Transition pour la transparence */
+        }
+    </style>
+</head>
+<body>
+    <!-- Écran de chargement -->
+    <div id="loading-screen">
+        <div id="loading-circle"></div>
+    </div>
+
+    <!-- Contenu principal -->
+    <div id="content">
+        <!-- Bouton de lecture de musique -->
+        <div id="music-button" onclick="playMusic()">
+            <img src="play.png" alt="Play Music" style="width: 100px; height: 100px;">
+        </div>
+
+        <!-- Vidéo de fond -->
+        <video id="background-video" autoplay muted loop playsinline>
+            <source src="background.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la lecture de vidéos.
+        </video>
+
+        <!-- Vidéo de la carte (fond vert retiré en amont) -->
+        <video id="card-video" src="card_animation.mp4" type="video/mp4" playsinline></video>
+
+        <!-- Boutons d'action (masqués au départ) -->
+        <div id="action-buttons">
+            <a href="LoryaneNathanael.pdf" download>
+                <img src="download.png" alt="Télécharger l'invitation" class="action-button">
+            </a>
+            <a href="https://forms.gle/kTqQ8wL49FKhgVUg7" target="_blank">
+                <img src="answer.png" alt="Répondre au formulaire" class="action-button">
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Variables pour contrôler l'état de la vidéo et la musique
+        let isMusicPlaying = false;
+        let audio = new Audio('musique.mp3');
+        let cardVideo = document.getElementById('card-video');
+        let clickCount = 0;
+        let pauseTimes = [3, 9, 12, 19, 24, 32]; // Points de pause pour la vidéo de la carte
+
+        // Fonction pour la musique
+        function playMusic() {
+            if (!isMusicPlaying) {
+                audio.loop = true;
+                audio.play().catch(error => console.error("Erreur de lecture de la musique:", error));
+                isMusicPlaying = true;
+            } else {
+                audio.pause();
+                isMusicPlaying = false;
+            }
         }
 
-        /* Positionnement centré et empilé, avec plus d'espacement */
-        #download-button {
-            top: 35%; /* Positionné plus haut */
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+        // Fonction pour le chargement de la page
+        window.addEventListener('load', () => {
+            document.getElementById('loading-screen').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+            cardVideo.currentTime = 0;
+        });
 
-        #answer-button {
-            top: 65%; /* Plus d'espace entre les boutons */
-            left: 50%;
-            transform: translate(-50%, -50%);
+        // Contrôle de la vidéo au clic pour les points de pause
+        cardVideo.addEventListener('click', () => {
+            if (clickCount < pauseTimes.length) {
+                cardVideo.play();
+                cardVideo.ontimeupdate = () => {
+                    if (cardVideo.currentTime >= pauseTimes[clickCount]) {
+                        cardVideo.pause();
+                        clickCount++;
+                    }
+                };
+            } else {
+                cardVideo.play();
+                cardVideo.onended = () => {
+                    cardVideo.style.display = 'none'; // Masque la vidéo après la fin
+                    document.getElementById('action-buttons').style.display = 'block'; // Affiche les boutons
+                };
+            }
+        });
+
+        // Compatibilité iOS pour la lecture automatique de la vidéo de fond
+        document.addEventListener('DOMContentLoaded', () => {
+            const backgroundVideo = document.getElementById('background-video');
+            if (backgroundVideo) {
+                backgroundVideo.play().catch(() => {
+                    backgroundVideo.muted = true;
+                    backgroundVideo.play();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
