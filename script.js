@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const centreDouble = document.getElementById('centre_double');
+    const centreDroite = document.getElementById('centre_droite');
 
-    // Applique la classe au clic pour déclencher le déplacement
-    centreDouble.addEventListener('click', function() {
-        centreDouble.classList.toggle('slide-left');
+    // Glissement vers la droite au clic
+    centreDroite.addEventListener('click', function() {
+        centreDroite.classList.add('slide-out-right');
     });
 });
