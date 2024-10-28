@@ -4,25 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invitation Mariage</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Écran de chargement -->
+    <div id="loading-screen">
+        <div id="loading-circle"></div>
+    </div>
+
     <!-- Contenu principal -->
-    <div id="content" style="display: block; text-align: center;">
+    <div id="content">
+        <!-- Bouton de lecture de musique -->
+        <div id="music-button" onclick="playMusic()">
+            <img src="play.png" alt="Play Music">
+        </div>
+
         <!-- Vidéo de fond -->
-        <video id="background-video" autoplay muted loop playsinline style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -2;">
+        <video id="background-video" autoplay muted loop playsinline>
             <source src="background.mp4" type="video/mp4">
             Votre navigateur ne supporte pas la lecture de vidéos.
         </video>
 
-        <!-- Image de la carte avec taille ajustée pour conserver les proportions -->
-        <div id="card-container" style="display: flex; justify-content: center; align-items: center;">
-            <img src="exterieur_recto.png" alt="Carte Extérieur" id="card" style="max-width: 90vw; max-height: 80vh; height: auto; width: auto;">
-        </div>
-
-        <!-- Bouton de lecture de musique avec taille réduite -->
-        <div id="music-button" style="position: absolute; top: 20px; left: 20px;">
-            <img src="play.png" alt="Play Music" style="width: 10px; height: 10px;">
-        </div>
+        <!-- Vidéo de la carte avec fond vert (désactivée initialement) -->
+        <video id="card-video" src="card_animation.mp4" type="video/mp4" playsinline></video>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
