@@ -1,4 +1,8 @@
+console.log("Script chargé"); // Vérifie que le fichier JS est chargé
+
 document.addEventListener('DOMContentLoaded', function() {
+    console.log("DOM complètement chargé"); // Vérifie que le DOM est prêt
+
     const exterieurRecto = document.getElementById('exterieur_recto');
     const centreDroite = document.getElementById('centre_droite');
     const centreGauche = document.getElementById('centre_gauche');
@@ -6,35 +10,43 @@ document.addEventListener('DOMContentLoaded', function() {
     const backgroundMusic = document.getElementById('background-music');
     let step = 1;
 
-    // Musique au clic sur le bouton de lecture
+    // Vérification de la musique
     playMusicButton.addEventListener('click', function() {
         backgroundMusic.play();
-        console.log("Musique lancée"); // Vérification musique
+        console.log("Musique lancée");
     });
 
-    // Premier clic : Animation d'ouverture de exterieur_recto
-    exterieurRecto.addEventListener('click', function() {
-        if (step === 1) {
-            console.log("Premier clic détecté"); // Vérification premier clic
-            exterieurRecto.classList.add('open-book');
-            setTimeout(() => {
-                exterieurRecto.style.display = 'none';
-                centreDroite.classList.remove('hidden');
-                console.log("Ouverture terminée, centre_droite affichée"); // Vérification ouverture
-            }, 1000);
-            step++;
-        }
-    });
+    // Premier clic pour l'ouverture de la couverture
+    if (exterieurRecto) {
+        exterieurRecto.addEventListener('click', function() {
+            if (step === 1) {
+                console.log("Premier clic détecté"); // Vérifie le premier clic
+                exterieurRecto.classList.add('open-book');
+                setTimeout(() => {
+                    exterieurRecto.style.display = 'none';
+                    centreDroite.classList.remove('hidden');
+                    console.log("Ouverture terminée, centre_droite affichée");
+                }, 1000);
+                step++;
+            }
+        });
+    } else {
+        console.error("Element 'exterieur_recto' non trouvé");
+    }
 
-    // Deuxième clic : Glissement de centre_droite et affichage de centre_gauche
-    centreDroite.addEventListener('click', function() {
-        if (step === 2) {
-            console.log("Deuxième clic détecté"); // Vérification deuxième clic
-            centreDroite.classList.add('slide-out-right');
-            centreGauche.classList.remove('hidden');
-            centreGauche.classList.add('slide-in-left');
-            console.log("Animation de glissement démarrée"); // Vérification glissement
-            step++;
-        }
-    });
+    // Deuxième clic pour le glissement
+    if (centreDroite) {
+        centreDroite.addEventListener('click', function() {
+            if (step === 2) {
+                console.log("Deuxième clic détecté"); // Vérifie le deuxième clic
+                centreDroite.classList.add('slide-out-right');
+                centreGauche.classList.remove('hidden');
+                centreGauche.classList.add('slide-in-left');
+                console.log("Animation de glissement démarrée");
+                step++;
+            }
+        });
+    } else {
+        console.error("Element 'centre_droite' non trouvé");
+    }
 });
