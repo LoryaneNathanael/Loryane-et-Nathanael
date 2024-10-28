@@ -5,10 +5,19 @@ window.addEventListener('load', () => {
 });
 
 // Fonction pour lire la musique
+let isMusicPlaying = false;
+let audio;
+
 function playMusic() {
-    const audio = new Audio('musique.mp3');
-    audio.loop = true;
-    audio.play();
+    if (!isMusicPlaying) {
+        audio = new Audio('musique.mp3');
+        audio.loop = true;
+        audio.play();
+        isMusicPlaying = true;
+    } else {
+        audio.pause();
+        isMusicPlaying = false;
+    }
 }
 
 // Compatibilité iOS pour la lecture automatique de la vidéo de fond
