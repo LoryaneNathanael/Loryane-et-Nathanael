@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invitation Mariage - Test Affichage</title>
+    <title>Invitation Mariage</title>
     <style>
         /* Style de l'écran de chargement */
         #loading-screen {
@@ -17,7 +17,6 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            border: 3px solid blue; /* Pour repérer visuellement */
         }
 
         #loading-circle {
@@ -37,7 +36,6 @@
         /* Style du contenu principal caché initialement */
         #content {
             display: none;
-            border: 3px solid red; /* Pour repérer visuellement */
         }
 
         /* Style de la vidéo de fond pour prendre toute la page */
@@ -56,24 +54,26 @@
             position: absolute;
             top: 20px;
             left: 20px;
-            width: 5px; /* Taille réduite pour test */
-            height: 5px;
+            width: 100px;
+            height: 100px;
             cursor: pointer;
             opacity: 0.5; /* Transparence initiale */
             transition: opacity 0.3s ease;
-            border: 2px solid green; /* Pour repérer visuellement */
+        }
+
+        #music-button:active {
+            opacity: 1; /* Opacité complète au clic */
         }
 
         /* Style de la vidéo de la carte */
         #card-video {
-            display: block; /* Rend visible la vidéo pour le test */
+            display: none; /* La vidéo est masquée, elle sera rendue visible par le canevas */
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             max-width: 90vw;
             max-height: 80vh;
-            border: 3px solid yellow; /* Pour repérer visuellement */
         }
     </style>
 </head>
@@ -87,7 +87,7 @@
     <div id="content">
         <!-- Bouton de lecture de musique -->
         <div id="music-button" onclick="playMusic()">
-            <img src="play.png" alt="Play Music" style="width: 5px; height: 5px;">
+            <img src="play.png" alt="Play Music" style="width: 100px; height: 100px;">
         </div>
 
         <!-- Vidéo de fond -->
@@ -96,22 +96,19 @@
             Votre navigateur ne supporte pas la lecture de vidéos.
         </video>
 
-        <!-- Vidéo de la carte -->
+        <!-- Vidéo de la carte avec fond vert -->
         <video id="card-video" src="card_animation.mp4" type="video/mp4" playsinline></video>
     </div>
 
     <script>
-        // Fonction pour afficher le contenu après le chargement
-        window.addEventListener('load', () => {
-            document.getElementById('loading-screen').style.display = 'none';
-            document.getElementById('content').style.display = 'block';
-            console.log("Page chargée et contenu visible");
-        });
-
-        // Fonction simple pour tester la musique
+        // Variables pour contrôler l'état de la vidéo et la musique
         let isMusicPlaying = false;
         let audio = new Audio('musique.mp3');
+        let cardVideo = document.getElementById('card-video');
+        let clickCount = 0;
+        let pauseTimes = [3, 9, 12, 19, 24, 32]; // Points de pause pour la vidéo de la carte
 
+        // Fonction pour la musique
         function playMusic() {
             if (!isMusicPlaying) {
                 audio.loop = true;
@@ -122,6 +119,88 @@
                 isMusicPlaying = false;
             }
         }
+
+        // Fonction pour le chargement de la page
+        window.addEventListener('load', () => {
+            document.getElementById('loading-screen').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+            setupChromaKey(); // Lance le traitement du fond vert pour la vidéo de la carte
+            cardVideo.currentTime = 0;
+        });
+
+        // Fonction de chroma key pour retirer le fond vert avec une couleur spécifique
+        function setupChromaKey() {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            document.body.appendChild(canvas);
+
+            cardVideo.addEventListener('loadeddata', () => {
+                canvas.width = cardVideo.videoWidth;
+                canvas.height = cardVideo.videoHeight;
+                canvas.style.position = 'absolute';
+                canvas.style.top = '50%';
+                canvas.style.left = '50%';
+                canvas.style.transform = 'translate(-50%, -50%)';
+                canvas.style.zIndex = '1';
+
+                cardVideo.addEventListener('play', () => {
+                    const renderFrame = () => {
+                        if (!cardVideo.paused && !cardVideo.ended) {
+                            ctx.drawImage(cardVideo, 0, 0, canvas.width, canvas.height);
+                            const frame = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                            const len = frame.data.length;
+
+                            const targetR = 126;
+                            const targetG = 217;
+                            const targetB = 87;
+                            const tolerance = 60;
+
+                            for (let i = 0; i < len; i += 4) {
+                                const r = frame.data[i];
+                                const g = frame.data[i + 1];
+                                const b = frame.data[i + 2];
+
+                                if (Math.abs(r - targetR) < tolerance &&
+                                    Math.abs(g - targetG) < tolerance &&
+                                    Math.abs(b - targetB) < tolerance) {
+                                    frame.data[i + 3] = 0;
+                                }
+                            }
+
+                            ctx.putImageData(frame, 0, 0);
+                            requestAnimationFrame(renderFrame);
+                        }
+                    };
+                    requestAnimationFrame(renderFrame);
+                });
+            });
+
+            // Contrôle de la vidéo au clic pour les points de pause
+            cardVideo.addEventListener('click', () => {
+                if (clickCount < pauseTimes.length) {
+                    cardVideo.play();
+                    cardVideo.ontimeupdate = () => {
+                        if (cardVideo.currentTime >= pauseTimes[clickCount]) {
+                            cardVideo.pause();
+                            clickCount++;
+                        }
+                    };
+                } else {
+                    cardVideo.play();
+                }
+            });
+        }
+
+        // Compatibilité iOS pour la lecture automatique de la vidéo de fond
+        document.addEventListener('DOMContentLoaded', () => {
+            const backgroundVideo = document.getElementById('background-video');
+            if (backgroundVideo) {
+                backgroundVideo.play().catch(() => {
+                    backgroundVideo.muted = true;
+                    backgroundVideo.play();
+                });
+            }
+        });
     </script>
 </body>
 </html>
