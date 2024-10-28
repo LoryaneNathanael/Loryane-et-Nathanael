@@ -57,12 +57,13 @@
             width: 100px;
             height: 100px;
             cursor: pointer;
-            opacity: 0.5; /* Transparence initiale */
+            opacity: 0.5;
             transition: opacity 0.3s ease;
+            z-index: 2; /* Empilement pour être au-dessus des autres éléments */
         }
 
         #music-button:active {
-            opacity: 1; /* Opacité complète au clic */
+            opacity: 1;
         }
 
         /* Style de la vidéo de la carte */
@@ -73,6 +74,7 @@
             transform: translate(-50%, -50%);
             max-width: 90vw;
             max-height: 80vh;
+            z-index: 1; /* Assurez-vous que le bouton de musique reste au-dessus */
         }
     </style>
 </head>
