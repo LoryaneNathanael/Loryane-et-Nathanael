@@ -1,13 +1,29 @@
 /* Style de l'écran de chargement */
-#loading {
+#loading-screen {
     position: fixed;
-    width: 100%;
-    height: 100%;
-    background: #ffffff;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fdb0aa;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 9999;
+}
+
+#loading-circle {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #000;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 /* Style du contenu principal caché initialement */
@@ -31,8 +47,8 @@
     position: absolute;
     top: 20px;
     left: 20px;
-    width: 10px; /* Réduction de la taille */
-    height: 10px;
+    width: 20px; /* Taille réduite */
+    height: 20px;
     cursor: pointer;
     opacity: 0.5; /* Transparence initiale */
     transition: opacity 0.3s ease;
@@ -42,28 +58,14 @@
     opacity: 1; /* Opacité complète au clic */
 }
 
-/* Conteneur de la carte avec effet 3D */
-#card-container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Style de la vidéo de la carte */
+#card-video {
+    position: absolute;
     top: 50%;
-    transform: translateY(-50%);
-    perspective: 1000px;
-    z-index: -1;
-    overflow: hidden;
-}
-
-#card {
-    width: auto; /* Ajustement de la largeur pour s’adapter à l’écran */
-    max-width: 90vw; /* Limite de largeur pour grands écrans */
-    height: auto; /* Conservation des proportions */
-    max-height: 80vh; /* S’assure que la carte est entièrement visible */
-    transition: transform 0.3s ease;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-#card-container:hover #card {
-    transform: rotateY(10deg) rotateX(5deg);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90vw;
+    max-height: 80vh;
+    display: none; /* Cachée au chargement */
+    z-index: 1;
 }
