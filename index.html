@@ -1,30 +1,36 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invitation Interactive</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitation Mariage</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Vidéo de fond -->
-    <video autoplay muted loop playsinline id="background-video">
-        <source src="background.mp4" type="video/mp4">
-    </video>
-
-    <!-- Musique avec bouton de lecture -->
-    <audio id="background-music" loop>
-        <source src="musique.mp3" type="audio/mp3">
-    </audio>
-    <img src="play.png" id="play-music" alt="Jouer la musique" style="position: fixed; top: 10px; left: 10px; z-index: 10; width: 100px; height: 100px; cursor: pointer;">
-
-    <!-- Conteneur pour l'animation d'ouverture et de glissement -->
-    <div class="book-container">
-        <img src="exterieur_recto.png" alt="Couverture extérieure" class="card-img" id="exterieur_recto">
-        <img src="centre_droite.png" alt="Carte intérieure droite" class="card-img hidden" id="centre_droite">
-        <img src="centre_gauche.png" alt="Carte intérieure gauche" class="card-img hidden" id="centre_gauche">
+    <!-- Écran de chargement -->
+    <div id="loading">
+        <p>Chargement...</p>
     </div>
 
-    <!-- Inclusion du script JS -->
+    <!-- Contenu principal -->
+    <div id="content">
+        <!-- Bouton de lecture de musique -->
+        <div id="music-button" onclick="playMusic()">
+            <img src="play.png" alt="Play Music">
+        </div>
+
+        <!-- Vidéo de fond -->
+        <video id="background-video" autoplay muted loop playsinline>
+            <source src="background.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la lecture de vidéos.
+        </video>
+
+        <!-- Image de la carte avec effet 3D -->
+        <div id="card-container">
+            <img src="exterieur_recto.png" alt="Carte Extérieur" id="card">
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
