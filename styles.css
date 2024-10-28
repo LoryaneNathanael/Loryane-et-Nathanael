@@ -15,6 +15,13 @@
     height: 100vh;
     object-fit: contain;
     position: relative;
-    left: 0; /* Position de départ */
     clip-path: inset(0 0 0 50%); /* Affiche uniquement la moitié droite */
+    transition: transform 1s ease; /* Ajoute une transition pour le déplacement */
+    transform: translateX(0); /* Position de départ */
+}
+
+/* Classe pour afficher la moitié gauche */
+.slide-left {
+    transform: translateX(-50vw); /* Glissement vers la gauche pour centrer la moitié gauche */
+    clip-path: inset(0 50% 0 0); /* Affiche uniquement la moitié gauche */
 }
