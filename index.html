@@ -4,33 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invitation Mariage</title>
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Écran de chargement -->
-    <div id="loading">
+    <div id="loading" style="display: none;">
         <p>Chargement...</p>
     </div>
 
     <!-- Contenu principal -->
-    <div id="content">
+    <div id="content" style="display: block;">
         <!-- Bouton de lecture de musique -->
-        <div id="music-button" onclick="playMusic()">
-            <img src="play.png" alt="Play Music">
+        <div id="music-button" style="position: absolute; top: 20px; left: 20px;">
+            <img src="play.png" alt="Play Music" style="width: 10px; height: 10px;">
         </div>
 
         <!-- Vidéo de fond -->
-        <video id="background-video" autoplay muted loop playsinline>
+        <video id="background-video" autoplay muted loop playsinline style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -2;">
             <source src="background.mp4" type="video/mp4">
             Votre navigateur ne supporte pas la lecture de vidéos.
         </video>
 
         <!-- Image de la carte avec effet 3D -->
-        <div id="card-container">
-            <img src="exterieur_recto.png" alt="Carte Extérieur" id="card">
+        <div id="card-container" style="position: relative; display: flex; justify-content: center; align-items: center; top: 50%; transform: translateY(-50%); perspective: 1000px; z-index: -1; overflow: hidden;">
+            <img src="exterieur_recto.png" alt="Carte Extérieur" id="card" style="max-width: 90vw; max-height: 80vh; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);">
         </div>
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
