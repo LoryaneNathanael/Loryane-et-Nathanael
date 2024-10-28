@@ -15,12 +15,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 centreDroite.classList.remove('hidden');
             }, 1000); // Délai pour correspondre à la durée de l'ouverture
             step++;
-        } else if (step === 2) {
-            // Fait glisser centre_droite vers la droite
-            centreDroite.classList.add('slide-out-right');
-            // Affiche centre_gauche depuis la gauche
+        }
+    });
+
+    // Deuxième clic pour le glissement entre centre_droite et centre_gauche
+    centreDroite.addEventListener('click', function() {
+        if (step === 2) {
+            centreDroite.classList.add('slide-out-right'); // Glisse centre_droite vers la droite
             centreGauche.classList.remove('hidden');
-            centreGauche.classList.add('slide-in-left');
+            centreGauche.classList.add('slide-in-left'); // Affiche centre_gauche au centre
             step++;
         }
     });
