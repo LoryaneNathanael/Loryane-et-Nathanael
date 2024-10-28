@@ -67,7 +67,6 @@
 
         /* Style de la vidéo de la carte */
         #card-video {
-            display: none; /* La vidéo est masquée, elle sera rendue visible par le canevas */
             position: absolute;
             top: 50%;
             left: 50%;
@@ -96,7 +95,7 @@
             Votre navigateur ne supporte pas la lecture de vidéos.
         </video>
 
-        <!-- Vidéo de la carte avec fond vert -->
+        <!-- Vidéo de la carte (fond vert retiré en amont) -->
         <video id="card-video" src="card_animation.mp4" type="video/mp4" playsinline></video>
     </div>
 
@@ -124,72 +123,23 @@
         window.addEventListener('load', () => {
             document.getElementById('loading-screen').style.display = 'none';
             document.getElementById('content').style.display = 'block';
-            setupChromaKey(); // Lance le traitement du fond vert pour la vidéo de la carte
             cardVideo.currentTime = 0;
         });
 
-        // Fonction de chroma key pour retirer le fond vert avec une couleur spécifique
-        function setupChromaKey() {
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            document.body.appendChild(canvas);
-
-            cardVideo.addEventListener('loadeddata', () => {
-                canvas.width = cardVideo.videoWidth;
-                canvas.height = cardVideo.videoHeight;
-                canvas.style.position = 'absolute';
-                canvas.style.top = '50%';
-                canvas.style.left = '50%';
-                canvas.style.transform = 'translate(-50%, -50%)';
-                canvas.style.zIndex = '1';
-
-                cardVideo.addEventListener('play', () => {
-                    const renderFrame = () => {
-                        if (!cardVideo.paused && !cardVideo.ended) {
-                            ctx.drawImage(cardVideo, 0, 0, canvas.width, canvas.height);
-                            const frame = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                            const len = frame.data.length;
-
-                            const targetR = 126;
-                            const targetG = 217;
-                            const targetB = 87;
-                            const tolerance = 60;
-
-                            for (let i = 0; i < len; i += 4) {
-                                const r = frame.data[i];
-                                const g = frame.data[i + 1];
-                                const b = frame.data[i + 2];
-
-                                if (Math.abs(r - targetR) < tolerance &&
-                                    Math.abs(g - targetG) < tolerance &&
-                                    Math.abs(b - targetB) < tolerance) {
-                                    frame.data[i + 3] = 0;
-                                }
-                            }
-
-                            ctx.putImageData(frame, 0, 0);
-                            requestAnimationFrame(renderFrame);
-                        }
-                    };
-                    requestAnimationFrame(renderFrame);
-                });
-            });
-
-            // Contrôle de la vidéo au clic pour les points de pause
-            cardVideo.addEventListener('click', () => {
-                if (clickCount < pauseTimes.length) {
-                    cardVideo.play();
-                    cardVideo.ontimeupdate = () => {
-                        if (cardVideo.currentTime >= pauseTimes[clickCount]) {
-                            cardVideo.pause();
-                            clickCount++;
-                        }
-                    };
-                } else {
-                    cardVideo.play();
-                }
-            });
-        }
+        // Contrôle de la vidéo au clic pour les points de pause
+        cardVideo.addEventListener('click', () => {
+            if (clickCount < pauseTimes.length) {
+                cardVideo.play();
+                cardVideo.ontimeupdate = () => {
+                    if (cardVideo.currentTime >= pauseTimes[clickCount]) {
+                        cardVideo.pause();
+                        clickCount++;
+                    }
+                };
+            } else {
+                cardVideo.play();
+            }
+        });
 
         // Compatibilité iOS pour la lecture automatique de la vidéo de fond
         document.addEventListener('DOMContentLoaded', () => {
