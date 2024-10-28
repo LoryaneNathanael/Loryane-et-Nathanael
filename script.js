@@ -3,7 +3,7 @@ let isMusicPlaying = false;
 let audio = new Audio('musique.mp3');
 let cardVideo = document.getElementById('card-video');
 let clickCount = 0;
-let pauseTimes = [3, 9, 12, 19, 24, 32]; // Seconds to pause
+let pauseTimes = [3, 9, 12, 19, 24, 32]; // Nouvelles secondes de pause
 
 // Fonction pour la musique
 function playMusic() {
@@ -31,8 +31,8 @@ function setupChromaKey() {
     const ctx = canvas.getContext('2d');
     document.body.appendChild(canvas);
 
-    // Ajuste le canevas à la taille de la vidéo une fois la vidéo chargée
     cardVideo.addEventListener('loadeddata', () => {
+        // Assure que le canevas utilise les dimensions de la vidéo après le chargement
         canvas.width = cardVideo.videoWidth;
         canvas.height = cardVideo.videoHeight;
         canvas.style.position = 'absolute';
@@ -76,7 +76,7 @@ function setupChromaKey() {
         });
     });
 
-    // Lance la lecture de la vidéo par étapes via les clics
+    // Contrôle de la vidéo au clic
     cardVideo.addEventListener('click', () => {
         if (clickCount < pauseTimes.length) {
             cardVideo.play();
