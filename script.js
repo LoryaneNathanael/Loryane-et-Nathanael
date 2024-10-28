@@ -2,7 +2,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const exterieurRecto = document.getElementById('exterieur_recto');
     const centreDroite = document.getElementById('centre_droite');
     const centreGauche = document.getElementById('centre_gauche');
+    const playMusicButton = document.getElementById('play-music');
+    const backgroundMusic = document.getElementById('background-music');
     let step = 1;
+
+    // Musique au clic sur le bouton de lecture
+    playMusicButton.addEventListener('click', function() {
+        backgroundMusic.play();
+    });
 
     // Animation d'ouverture et de glissement
     exterieurRecto.addEventListener('click', function() {
