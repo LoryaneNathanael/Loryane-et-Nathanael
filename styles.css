@@ -20,7 +20,7 @@ video#background-video {
     position: relative;
 }
 
-/* Images de la carte avec proportions respectées */
+/* Images de la carte avec proportions */
 .card-img {
     max-width: 100vw;
     max-height: 100vh;
@@ -33,11 +33,10 @@ video#background-video {
     transform: translate(-50%, -50%);
 }
 
-/* Ouverture du livre pour exterieur_recto */
+/* Ouverture de livre pour exterieur_recto */
 .open-book {
     transform-origin: left;
-    transform: rotateY(-180deg); /* Ouvre vers la gauche */
-    transition: transform 1s ease;
+    transform: rotateY(-180deg); /* Ouvre de droite à gauche */
 }
 
 /* Animation de glissement vers la droite pour centre_droite */
