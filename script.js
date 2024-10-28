@@ -3,7 +3,7 @@ let isMusicPlaying = false;
 let audio = new Audio('musique.mp3');
 let cardVideo = document.getElementById('card-video');
 let clickCount = 0;
-let pauseTimes = [3, 7, 12, 15, 17, 19, 21, 27, 31]; // Seconds to pause
+let pauseTimes = [3, 9, 12, 19, 24, 32]; // Seconds to pause
 
 // Fonction pour la musique
 function playMusic() {
@@ -25,7 +25,7 @@ window.addEventListener('load', () => {
     cardVideo.currentTime = 0;
 });
 
-// Fonction de chroma key pour retirer le fond vert
+// Fonction de chroma key pour retirer le fond vert avec une couleur spécifique
 function setupChromaKey() {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
@@ -49,13 +49,21 @@ function setupChromaKey() {
                     const frame = ctx.getImageData(0, 0, canvas.width, canvas.height);
                     const len = frame.data.length;
 
+                    // Valeurs précises du fond vert fluo #7ed957
+                    const targetR = 126;
+                    const targetG = 217;
+                    const targetB = 87;
+                    const tolerance = 60; // Ajuster la tolérance pour la couleur
+
                     for (let i = 0; i < len; i += 4) {
                         const r = frame.data[i];
                         const g = frame.data[i + 1];
                         const b = frame.data[i + 2];
 
-                        // Condition pour rendre transparent le fond vert fluo
-                        if (g > 200 && r < 150 && b < 150) {
+                        // Condition pour rendre transparent le fond vert avec tolérance
+                        if (Math.abs(r - targetR) < tolerance &&
+                            Math.abs(g - targetG) < tolerance &&
+                            Math.abs(b - targetB) < tolerance) {
                             frame.data[i + 3] = 0; // Alpha à 0 (transparent)
                         }
                     }
