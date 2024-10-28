@@ -78,16 +78,32 @@
             z-index: 1;
         }
 
-        /* Styles pour les boutons après la fin de la vidéo */
-        #action-buttons {
-            display: none; /* Masqué jusqu'à la fin de la vidéo */
-            margin-top: 20px;
+        /* Style pour les boutons (Télécharger et Répondre) */
+        #download-button, #answer-button {
+            position: fixed;
+            width: 150px; /* Taille réduite des boutons */
+            height: auto;
+            opacity: 0.7;
+            display: none; /* Caché au début */
+            cursor: pointer;
+            transition: opacity 0.3s ease; /* Transition pour la transparence */
         }
 
-        .action-button {
-            display: block;
-            margin: 10px auto;
-            cursor: pointer;
+        /* Positionnement centré et empilé, avec plus d'espacement */
+        #download-button {
+            top: 35%; /* Positionné plus haut */
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #answer-button {
+            top: 65%; /* Plus d'espace entre les boutons */
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #download-button:hover, #answer-button:hover {
+            opacity: 1; /* Opacité totale au survol */
         }
     </style>
 </head>
@@ -114,14 +130,12 @@
         <video id="card-video" src="card_animation.mp4" type="video/mp4" playsinline></video>
 
         <!-- Boutons d'action (masqués au départ) -->
-        <div id="action-buttons">
-            <a href="LoryaneNathanael.pdf" download>
-                <img src="download.png" alt="Télécharger l'invitation" class="action-button">
-            </a>
-            <a href="https://forms.gle/kTqQ8wL49FKhgVUg7" target="_blank">
-                <img src="answer.png" alt="Répondre au formulaire" class="action-button">
-            </a>
-        </div>
+        <a href="LoryaneNathanael.pdf" download id="download-button">
+            <img src="download.png" alt="Télécharger l'invitation">
+        </a>
+        <a href="https://forms.gle/kTqQ8wL49FKhgVUg7" target="_blank" id="answer-button">
+            <img src="answer.png" alt="Répondre au formulaire">
+        </a>
     </div>
 
     <script>
@@ -165,21 +179,10 @@
                 cardVideo.play();
                 cardVideo.onended = () => {
                     cardVideo.style.display = 'none'; // Masque la vidéo après la fin
-                    document.getElementById('action-buttons').style.display = 'block'; // Affiche les boutons
+                    document.getElementById('download-button').style.display = 'block'; // Affiche le bouton de téléchargement
+                    document.getElementById('answer-button').style.display = 'block'; // Affiche le bouton du formulaire
                 };
             }
         });
 
-        // Compatibilité iOS pour la lecture automatique de la vidéo de fond
-        document.addEventListener('DOMContentLoaded', () => {
-            const backgroundVideo = document.getElementById('background-video');
-            if (backgroundVideo) {
-                backgroundVideo.play().catch(() => {
-                    backgroundVideo.muted = true;
-                    backgroundVideo.play();
-                });
-            }
-        });
-    </script>
-</body>
-</html>
+        // Compatibilité iOS pour l
