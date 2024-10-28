@@ -31,8 +31,8 @@
     position: absolute;
     top: 20px;
     left: 20px;
-    width: 30px;
-    height: 30px;
+    width: 10px; /* Réduction de la taille */
+    height: 10px;
     cursor: pointer;
     opacity: 0.5; /* Transparence initiale */
     transition: opacity 0.3s ease;
@@ -52,11 +52,14 @@
     transform: translateY(-50%);
     perspective: 1000px;
     z-index: -1;
+    overflow: hidden;
 }
 
 #card {
-    width: 90%; /* Prend presque toute la largeur de l'écran */
-    max-width: 600px; /* Limite de taille pour grands écrans */
+    width: auto; /* Ajustement de la largeur pour s’adapter à l’écran */
+    max-width: 90vw; /* Limite de largeur pour grands écrans */
+    height: auto; /* Conservation des proportions */
+    max-height: 80vh; /* S’assure que la carte est entièrement visible */
     transition: transform 0.3s ease;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
