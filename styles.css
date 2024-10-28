@@ -1,27 +1,29 @@
-/* Conteneur pour centrer l'image */
-.book-container {
-    position: relative;
+/* Vidéo de fond */
+video#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    object-fit: cover;
+    z-index: -1; /* Place la vidéo derrière les autres éléments */
 }
 
-/* Image de la carte */
-#centre_double {
-    width: auto;
-    height: 100vh;
-    object-fit: contain;
+/* Conteneur pour tester le glissement */
+.book-container {
     position: relative;
-    clip-path: inset(0 0 0 50%); /* Affiche uniquement la moitié droite */
-    transition: transform 1s ease; /* Ajoute une transition pour le déplacement */
-    transform: translateX(0); /* Position de départ */
+    width: 300px;
+    height: auto;
+    z-index: 1;
 }
 
-/* Classe pour afficher la moitié gauche */
-.slide-left {
-    transform: translateX(-50vw); /* Glissement vers la gauche pour centrer la moitié gauche */
-    clip-path: inset(0 50% 0 0); /* Affiche uniquement la moitié gauche */
+.card-img {
+    width: 100%;
+    height: auto;
+    transition: transform 1s ease; /* Transition de glissement */
+}
+
+/* Animation de glissement vers la droite */
+.slide-out-right {
+    transform: translateX(300px); /* Fait sortir l'image vers la droite */
 }
