@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Glissement</title>
+    <title>Animation Livre</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -11,9 +11,10 @@
         <source src="background.mp4" type="video/mp4">
     </video>
 
-    <!-- Conteneur pour tester le glissement de centre_droite et centre_gauche -->
+    <!-- Conteneur pour l'animation d'ouverture et de glissement -->
     <div class="book-container">
-        <img src="centre_droite.png" alt="Carte intérieure droite" class="card-img" id="centre_droite">
+        <img src="exterieur_recto.png" alt="Couverture extérieure" class="card-img" id="exterieur_recto">
+        <img src="centre_droite.png" alt="Carte intérieure droite" class="card-img hidden" id="centre_droite">
         <img src="centre_gauche.png" alt="Carte intérieure gauche" class="card-img hidden" id="centre_gauche">
     </div>
 
