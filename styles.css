@@ -1,56 +1,54 @@
-/* Vidéo de fond */
-video#background-video {
+/* Style de l'écran de chargement */
+#loading {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* Style du contenu principal caché initialement */
+#content {
+    display: none;
+}
+
+/* Style de la vidéo de fond */
+#background-video {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     z-index: -1;
 }
 
-/* Conteneur pour centrer les images */
-.book-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    z-index: 1;
-    position: relative;
+/* Style du bouton de musique */
+#music-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
 }
 
-/* Images de la carte avec proportions */
-.card-img {
-    max-width: 100vw;
-    max-height: 100vh;
-    width: auto;
-    height: auto;
-    transition: transform 1s ease, opacity 1s ease;
+/* Conteneur de la carte avec effet 3D */
+#card-container {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) perspective(1000px);
 }
 
-/* Ouverture de livre pour exterieur_recto */
-.open-book {
-    transform-origin: left;
-    transform: rotateY(-180deg); /* Ouvre de droite à gauche */
+#card {
+    width: 300px;
+    transition: transform 0.3s ease;
 }
 
-/* Animation de glissement vers la droite pour centre_droite */
-.slide-out-right {
-    transform: translate(100vw, -50%);
-}
-
-/* Animation de glissement vers le centre pour centre_gauche */
-.slide-in-left {
-    transform: translate(-50%, -50%);
-    opacity: 1;
-}
-
-/* Masquer centre_droite et centre_gauche au départ */
-.hidden {
-    opacity: 0;
+#card-container:hover #card {
+    transform: rotateY(10deg) rotateX(5deg);
 }
