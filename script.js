@@ -22,15 +22,52 @@ function playMusic() {
 window.addEventListener('load', () => {
     document.getElementById('loading-screen').style.display = 'none';
     document.getElementById('content').style.display = 'block';
-    cardVideo.style.display = 'block'; // Affiche la vidéo de la carte une fois chargée
+    cardVideo.style.display = 'none'; // Masque la vidéo de la carte pour utiliser le canevas
     cardVideo.pause();
     cardVideo.currentTime = 0;
+    setupChromaKey(); // Lance le traitement du fond vert
 });
 
-// Fonction pour retirer le fond vert
-cardVideo.addEventListener('loadedmetadata', () => {
-    cardVideo.style.WebkitFilter = 'chroma key(0.494, 0.847, 0.341)'; // Vert fluo
-});
+// Fonction de chroma key pour retirer le fond vert
+function setupChromaKey() {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    document.body.appendChild(canvas);
+
+    canvas.width = cardVideo.videoWidth;
+    canvas.height = cardVideo.videoHeight;
+
+    canvas.style.position = 'absolute';
+    canvas.style.top = '50%';
+    canvas.style.left = '50%';
+    canvas.style.transform = 'translate(-50%, -50%)';
+    canvas.style.zIndex = '1';
+
+    cardVideo.addEventListener('play', () => {
+        const renderFrame = () => {
+            if (!cardVideo.paused && !cardVideo.ended) {
+                ctx.drawImage(cardVideo, 0, 0, canvas.width, canvas.height);
+                const frame = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                const len = frame.data.length;
+
+                for (let i = 0; i < len; i += 4) {
+                    const r = frame.data[i];
+                    const g = frame.data[i + 1];
+                    const b = frame.data[i + 2];
+
+                    // Chroma key condition for green
+                    if (g > 200 && r < 150 && b < 150) {
+                        frame.data[i + 3] = 0; // Set alpha to 0 (transparent)
+                    }
+                }
+
+                ctx.putImageData(frame, 0, 0);
+                requestAnimationFrame(renderFrame);
+            }
+        };
+        requestAnimationFrame(renderFrame);
+    });
+}
 
 // Fonction de contrôle de la vidéo par clics
 cardVideo.addEventListener('click', () => {
