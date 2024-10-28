@@ -47,8 +47,8 @@
     position: absolute;
     top: 20px;
     left: 20px;
-    width: 20px; /* Taille réduite */
-    height: 20px;
+    width: 10px; /* Taille réduite */
+    height: 10px;
     cursor: pointer;
     opacity: 0.5; /* Transparence initiale */
     transition: opacity 0.3s ease;
@@ -60,12 +60,5 @@
 
 /* Style de la vidéo de la carte */
 #card-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 90vw;
-    max-height: 80vh;
-    display: none; /* Cachée au chargement */
-    z-index: 1;
+    display: none; /* La vidéo est masquée car nous allons utiliser le canevas */
 }
