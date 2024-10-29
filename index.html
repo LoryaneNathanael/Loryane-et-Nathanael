@@ -33,7 +33,7 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Style du contenu principal caché initialement */
+        /* Style de base pour le contenu principal */
         #content {
             display: none;
             text-align: center;
@@ -81,10 +81,9 @@
         /* Conteneur de boutons d'action */
         #action-buttons {
             display: none; /* Masqué jusqu'à la fin de la vidéo */
-            display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 100px; /* Ajuste la position verticale */
+            margin-top: 100px;
             position: relative;
             z-index: 1;
         }
@@ -96,7 +95,7 @@
             opacity: 0.5;
             transition: opacity 0.3s ease;
             cursor: pointer;
-            margin: 15px 0; /* Espacement vertical entre les boutons */
+            margin: 15px 0;
         }
 
         /* Effet de survol pour les boutons d'action */
