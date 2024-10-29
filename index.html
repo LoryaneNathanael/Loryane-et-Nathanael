@@ -33,7 +33,7 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Style de base pour le contenu principal */
+        /* Style du contenu principal caché initialement */
         #content {
             display: none;
             text-align: center;
@@ -78,27 +78,28 @@
             z-index: 1;
         }
 
-        /* Style du conteneur de boutons d'action */
+        /* Conteneur de boutons d'action */
         #action-buttons {
             display: none; /* Masqué jusqu'à la fin de la vidéo */
-            text-align: center; /* Centrage horizontal des boutons */
-            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px; /* Ajuste la position verticale */
         }
 
         /* Style des boutons d'action */
         .action-button {
-            width: 150px; /* Taille définie */
+            width: 150px;
             height: auto;
-            opacity: 0.5; /* Opacité initiale identique au bouton de musique */
+            opacity: 0.5;
             transition: opacity 0.3s ease;
             cursor: pointer;
-            margin: 10px auto; /* Centrage des boutons individuellement */
-            display: inline-block; /* Garde la mise en ligne pour le centrage */
+            margin: 15px 0; /* Espacement vertical entre les boutons */
         }
 
         /* Effet de survol pour les boutons d'action */
         .action-button:hover {
-            opacity: 1; /* Augmente l'opacité au survol */
+            opacity: 1;
         }
     </style>
 </head>
@@ -176,7 +177,7 @@
                 cardVideo.play();
                 cardVideo.onended = () => {
                     cardVideo.style.display = 'none'; // Masque la vidéo après la fin
-                    document.getElementById('action-buttons').style.display = 'block'; // Affiche les boutons
+                    document.getElementById('action-buttons').style.display = 'flex'; // Affiche les boutons en colonne
                 };
             }
         });
