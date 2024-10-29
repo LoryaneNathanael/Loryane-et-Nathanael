@@ -39,6 +39,26 @@
             text-align: center;
         }
 
+        /* Style de la flèche clignotante */
+        #arrow-right {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            font-size: 36px;
+            color: #a1814b; /* Couleur de la flèche */
+            animation: blink 2s infinite; /* Animation de clignotement lent */
+            z-index: 3;
+            display: none;
+            font-family: Arial, sans-serif;
+            pointer-events: none; /* Permet de passer les clics à travers la flèche */
+        }
+
+        @keyframes blink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0; }
+        }
+
         /* Style de la vidéo de fond pour prendre toute la page */
         #background-video {
             position: fixed;
@@ -69,12 +89,13 @@
 
         /* Style de la vidéo de la carte pour occuper tout l’écran */
         #card-video {
+            display: block;
             position: fixed;
-            top: 0;
-            left: 0;
+            top: 50%;
+            left: 50%;
             width: 100vw;
-            height: 100vh;
-            object-fit: contain;
+            height: auto; /* Conserver les proportions */
+            transform: translate(-50%, -50%);
             z-index: 1;
         }
 
@@ -83,8 +104,8 @@
             display: none; /* Masqué jusqu'à la fin de la vidéo */
             flex-direction: column;
             align-items: center;
-            margin-top: 100px;
             position: relative;
+            margin-top: 200px; /* Ajustement vertical pour centrer les boutons */
             z-index: 1;
         }
 
@@ -110,6 +131,9 @@
         <div id="loading-circle"></div>
     </div>
 
+    <!-- Flèche clignotante -->
+    <div id="arrow-right">➔</div>
+
     <!-- Contenu principal -->
     <div id="content">
         <!-- Bouton de lecture de musique -->
@@ -123,30 +147,54 @@
             Votre navigateur ne supporte pas la lecture de vidéos.
         </video>
 
-        <!-- Vidéo de la carte avec transparence (au format WebM) -->
-        <video id="card-video" src="card_animation.webm" type="video/webm" playsinline></video>
+        <!-- Vidéo de la carte (différente selon l'appareil) -->
+        <video id="card-video" playsinline></video>
 
         <!-- Boutons d'action (masqués au départ) -->
         <div id="action-buttons">
-            <a href="LoryaneNathanael.pdf" download>
+            <!-- Bouton de téléchargement avec image download.png -->
+            <a id="download-button" onclick="downloadInvitation()">
                 <img src="download.png" alt="Télécharger l'invitation" class="action-button">
             </a>
-            <a href="https://forms.gle/kTqQ8wL49FKhgVUg7" target="_blank">
+            <a href="https://forms.gle/XDoqUYNLDYwuiema9" target="_blank">
                 <img src="answer.png" alt="Répondre au formulaire" class="action-button">
             </a>
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
     <script>
+        // Fonction pour détecter si l'appareil est sous iOS
+        function isIOS() {
+            return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+        }
+
         // Variables pour contrôler l'état de la vidéo et la musique
         let isMusicPlaying = false;
         let audio = new Audio('musique.mp3');
         let cardVideo = document.getElementById('card-video');
+        let arrowRight = document.getElementById('arrow-right');
         let clickCount = 0;
-        let pauseTimes = [4, 6, 13, 15, 23]; // Nouveaux points de pause
+        let pauseTimes = [4, 6, 13, 15, 23]; // Points de pause pour la vidéo
 
-        // Définir la vitesse de lecture de la vidéo
-        cardVideo.playbackRate = 1.45;
+        // Définir la vidéo de la carte en fonction de l'appareil
+        window.addEventListener('load', () => {
+            if (isIOS()) {
+                // Si c'est un appareil iOS, charger la vidéo adaptée pour iOS
+                cardVideo.src = "card_animationios.webm";
+                cardVideo.type = "video/webm";
+            } else {
+                // Pour les autres appareils, charger la vidéo par défaut
+                cardVideo.src = "card_animation.webm";
+                cardVideo.type = "video/webm";
+            }
+            
+            document.getElementById('loading-screen').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+            cardVideo.currentTime = 0;
+            cardVideo.pause(); // La vidéo est en pause à 0s au début
+            showArrow(); // Afficher la flèche pour inviter l'utilisateur à cliquer
+        });
 
         // Fonction pour la musique
         function playMusic() {
@@ -160,31 +208,46 @@
             }
         }
 
-        // Fonction pour le chargement de la page
-        window.addEventListener('load', () => {
-            document.getElementById('loading-screen').style.display = 'none';
-            document.getElementById('content').style.display = 'block';
-            cardVideo.currentTime = 0;
-        });
+        // Fonction pour afficher la flèche clignotante
+        function showArrow() {
+            arrowRight.style.display = 'block';
+        }
+
+        // Fonction pour masquer la flèche clignotante
+        function hideArrow() {
+            arrowRight.style.display = 'none';
+        }
 
         // Contrôle de la vidéo au clic pour les points de pause
         cardVideo.addEventListener('click', () => {
+            hideArrow(); // Masquer la flèche après un clic
+            
             if (clickCount < pauseTimes.length) {
                 cardVideo.play();
                 cardVideo.ontimeupdate = () => {
                     if (cardVideo.currentTime >= pauseTimes[clickCount]) {
                         cardVideo.pause();
                         clickCount++;
+                        showArrow(); // Afficher la flèche chaque fois que la vidéo se met en pause
                     }
                 };
             } else {
-                cardVideo.play(); // Laisse la vidéo se terminer sans autre pause
+                cardVideo.play();
                 cardVideo.onended = () => {
-                    cardVideo.style.display = 'none'; // Masque la vidéo après la fin
-                    document.getElementById('action-buttons').style.display = 'flex'; // Affiche les boutons en colonne
+                    cardVideo.style.display = 'none';
+                    document.getElementById('action-buttons').style.display = 'flex';
+                    hideArrow(); // Masquer la flèche à la fin de la vidéo
                 };
             }
         });
+
+        // Fonction de téléchargement sans concaténation
+        function downloadInvitation() {
+            const link = document.createElement('a');
+            link.href = "LoryaneNathanael.pdf";
+            link.download = "Invitation Mariage L&N.pdf";
+            link.click();
+        }
 
         // Compatibilité iOS pour la lecture automatique de la vidéo de fond
         document.addEventListener('DOMContentLoaded', () => {
