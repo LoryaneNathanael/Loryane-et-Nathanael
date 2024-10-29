@@ -33,7 +33,7 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Style du contenu principal caché initialement */
+        /* Style de base pour le contenu principal */
         #content {
             display: none;
             text-align: center;
@@ -78,20 +78,22 @@
             z-index: 1;
         }
 
-        /* Styles pour les boutons après la fin de la vidéo */
+        /* Style du conteneur de boutons d'action */
         #action-buttons {
             display: none; /* Masqué jusqu'à la fin de la vidéo */
+            text-align: center; /* Centrage horizontal des boutons */
             margin-top: 20px;
         }
 
+        /* Style des boutons d'action */
         .action-button {
             width: 150px; /* Taille définie */
             height: auto;
             opacity: 0.5; /* Opacité initiale identique au bouton de musique */
             transition: opacity 0.3s ease;
             cursor: pointer;
-            display: block;
-            margin: 10px auto;
+            margin: 10px auto; /* Centrage des boutons individuellement */
+            display: inline-block; /* Garde la mise en ligne pour le centrage */
         }
 
         /* Effet de survol pour les boutons d'action */
