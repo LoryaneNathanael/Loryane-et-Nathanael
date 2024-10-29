@@ -143,7 +143,7 @@
         let audio = new Audio('musique.mp3');
         let cardVideo = document.getElementById('card-video');
         let clickCount = 0;
-        let pauseTimes = [3, 9, 12, 19, 24, 32]; // Points de pause pour la vidéo de la carte
+        let pauseTimes = [3, 9, 12, 19, 24]; // Dernier point de pause supprimé
 
         // Fonction pour la musique
         function playMusic() {
@@ -175,7 +175,7 @@
                     }
                 };
             } else {
-                cardVideo.play();
+                cardVideo.play(); // Laisse la vidéo se terminer sans autre pause
                 cardVideo.onended = () => {
                     cardVideo.style.display = 'none'; // Masque la vidéo après la fin
                     document.getElementById('action-buttons').style.display = 'flex'; // Affiche les boutons en colonne
