@@ -85,9 +85,18 @@
         }
 
         .action-button {
+            width: 150px; /* Taille définie */
+            height: auto;
+            opacity: 0.5; /* Opacité initiale identique au bouton de musique */
+            transition: opacity 0.3s ease;
+            cursor: pointer;
             display: block;
             margin: 10px auto;
-            cursor: pointer;
+        }
+
+        /* Effet de survol pour les boutons d'action */
+        .action-button:hover {
+            opacity: 1; /* Augmente l'opacité au survol */
         }
     </style>
 </head>
