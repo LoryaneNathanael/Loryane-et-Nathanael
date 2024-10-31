@@ -46,12 +46,12 @@
             right: 20px;
             transform: translateY(-50%);
             font-size: 36px;
-            color: #a1814b; /* Couleur de la flèche */
-            animation: blink 2s infinite; /* Animation de clignotement lent */
+            color: #a1814b;
+            animation: blink 2s infinite;
             z-index: 3;
             display: none;
             font-family: Arial, sans-serif;
-            pointer-events: none; /* Permet de passer les clics à travers la flèche */
+            pointer-events: none;
         }
 
         @keyframes blink {
@@ -59,7 +59,7 @@
             25%, 75% { opacity: 0; }
         }
 
-        /* Style de la vidéo de fond pour prendre toute la page */
+        /* Style de la vidéo de fond */
         #background-video {
             position: fixed;
             top: 0;
@@ -87,14 +87,14 @@
             opacity: 1;
         }
 
-        /* Style de la vidéo de la carte pour occuper tout l’écran */
+        /* Style de la vidéo de la carte */
         #card-video {
             display: block;
             position: fixed;
             top: 50%;
             left: 50%;
             width: 100vw;
-            height: auto; /* Conserver les proportions */
+            height: auto;
             object-fit: contain;
             transform: translate(-50%, -50%);
             z-index: 1;
@@ -102,11 +102,11 @@
 
         /* Conteneur de boutons d'action */
         #action-buttons {
-            display: none; /* Masqué jusqu'à la fin de la vidéo */
+            display: none;
             flex-direction: column;
             align-items: center;
             position: relative;
-            margin-top: 200px; /* Ajustement vertical pour centrer les boutons */
+            margin-top: 200px;
             z-index: 1;
         }
 
@@ -153,7 +153,6 @@
 
         <!-- Boutons d'action (masqués au départ) -->
         <div id="action-buttons">
-            <!-- Bouton de téléchargement avec image download.png -->
             <a id="download-button" onclick="downloadInvitation()">
                 <img src="download.png" alt="Télécharger l'invitation" class="action-button">
             </a>
@@ -181,9 +180,9 @@
         // Définir la vidéo de la carte en fonction de l'appareil
         window.addEventListener('load', () => {
             if (isIOS()) {
-                // Si c'est un appareil iOS, charger la vidéo adaptée pour iOS
-                cardVideo.src = "card_animationios.webm";
-                cardVideo.type = "video/webm";
+                // Si c'est un appareil iOS, charger la version mp4
+                cardVideo.src = "card_animationios.mp4";
+                cardVideo.type = "video/mp4";
             } else {
                 // Pour les autres appareils, charger la vidéo par défaut
                 cardVideo.src = "card_animation.webm";
@@ -193,8 +192,8 @@
             document.getElementById('loading-screen').style.display = 'none';
             document.getElementById('content').style.display = 'block';
             cardVideo.currentTime = 0;
-            cardVideo.pause(); // La vidéo est en pause à 0s au début
-            showArrow(); // Afficher la flèche pour inviter l'utilisateur à cliquer
+            cardVideo.pause();
+            showArrow();
         });
 
         // Fonction pour la musique
@@ -221,7 +220,7 @@
 
         // Contrôle de la vidéo au clic pour les points de pause
         cardVideo.addEventListener('click', () => {
-            hideArrow(); // Masquer la flèche après un clic
+            hideArrow();
             
             if (clickCount < pauseTimes.length) {
                 cardVideo.play();
@@ -229,7 +228,7 @@
                     if (cardVideo.currentTime >= pauseTimes[clickCount]) {
                         cardVideo.pause();
                         clickCount++;
-                        showArrow(); // Afficher la flèche chaque fois que la vidéo se met en pause
+                        showArrow();
                     }
                 };
             } else {
@@ -237,7 +236,7 @@
                 cardVideo.onended = () => {
                     cardVideo.style.display = 'none';
                     document.getElementById('action-buttons').style.display = 'flex';
-                    hideArrow(); // Masquer la flèche à la fin de la vidéo
+                    hideArrow();
                 };
             }
         });
