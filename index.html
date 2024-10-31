@@ -19,13 +19,18 @@
             z-index: 9999;
         }
 
+        /* Style du cercle de chargement avec l'image logo en arrière-plan */
         #loading-circle {
-            width: 50px;
-            height: 50px;
-            border: 7px solid #fff4f1;
+            width: 70px;
+            height: 70px;
+            border: 5px solid #fff4f1;
             border-top-color: transparent;
             border-radius: 50%;
             animation: spin 1s linear infinite;
+            background-image: url('logo.png');
+            background-size: 60%; /* Ajuster selon la taille souhaitée du logo */
+            background-repeat: no-repeat;
+            background-position: center;
         }
 
         @keyframes spin {
@@ -164,27 +169,22 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
     <script>
-        // Fonction pour détecter si l'appareil est sous iOS
         function isIOS() {
             return /iPhone|iPad|iPod/i.test(navigator.userAgent);
         }
 
-        // Variables pour contrôler l'état de la vidéo et la musique
         let isMusicPlaying = false;
         let audio = new Audio('musique.mp3');
         let cardVideo = document.getElementById('card-video');
         let arrowRight = document.getElementById('arrow-right');
         let clickCount = 0;
-        let pauseTimes = [4.3, 6, 13, 15, 23]; // Points de pause pour la vidéo
+        let pauseTimes = [4.3, 6, 13, 15, 23];
 
-        // Définir la vidéo de la carte en fonction de l'appareil
         window.addEventListener('load', () => {
             if (isIOS()) {
-                // Si c'est un appareil iOS, charger la version mp4
                 cardVideo.src = "card_animationios.mp4";
                 cardVideo.type = "video/mp4";
             } else {
-                // Pour les autres appareils, charger la vidéo par défaut
                 cardVideo.src = "card_animation.webm";
                 cardVideo.type = "video/webm";
             }
@@ -196,7 +196,6 @@
             showArrow();
         });
 
-        // Fonction pour la musique
         function playMusic() {
             if (!isMusicPlaying) {
                 audio.loop = true;
@@ -208,17 +207,14 @@
             }
         }
 
-        // Fonction pour afficher la flèche clignotante
         function showArrow() {
             arrowRight.style.display = 'block';
         }
 
-        // Fonction pour masquer la flèche clignotante
         function hideArrow() {
             arrowRight.style.display = 'none';
         }
 
-        // Contrôle de la vidéo au clic pour les points de pause
         cardVideo.addEventListener('click', () => {
             hideArrow();
             
@@ -241,7 +237,6 @@
             }
         });
 
-        // Fonction de téléchargement sans concaténation
         function downloadInvitation() {
             const link = document.createElement('a');
             link.href = "LoryaneNathanael.pdf";
@@ -249,7 +244,6 @@
             link.click();
         }
 
-        // Compatibilité iOS pour la lecture automatique de la vidéo de fond
         document.addEventListener('DOMContentLoaded', () => {
             const backgroundVideo = document.getElementById('background-video');
             if (backgroundVideo) {
