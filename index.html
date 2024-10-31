@@ -27,8 +27,8 @@
             border-top-color: transparent;
             border-radius: 50%;
             animation: spin 1s linear infinite;
-            background-image: url('logo.png');
-            background-size: 60%; /* Ajuster selon la taille souhaitée du logo */
+            background-image: url('logo.png'); /* Assurez-vous que le chemin du logo est correct */
+            background-size: 60%;
             background-repeat: no-repeat;
             background-position: center;
         }
@@ -192,8 +192,8 @@
             document.getElementById('loading-screen').style.display = 'none';
             document.getElementById('content').style.display = 'block';
             cardVideo.currentTime = 0;
-            cardVideo.pause();
-            showArrow();
+            cardVideo.pause(); // Mettre la vidéo en pause au démarrage
+            showArrow(); // Afficher la flèche pour inviter l'utilisateur à cliquer
         });
 
         function playMusic() {
@@ -215,8 +215,9 @@
             arrowRight.style.display = 'none';
         }
 
+        // Gestion des pauses et de la lecture au clic
         cardVideo.addEventListener('click', () => {
-            hideArrow();
+            hideArrow(); // Masquer la flèche après un clic
             
             if (clickCount < pauseTimes.length) {
                 cardVideo.play();
@@ -224,7 +225,7 @@
                     if (cardVideo.currentTime >= pauseTimes[clickCount]) {
                         cardVideo.pause();
                         clickCount++;
-                        showArrow();
+                        showArrow(); // Afficher la flèche chaque fois que la vidéo se met en pause
                     }
                 };
             } else {
