@@ -161,29 +161,35 @@
             <a id="download-button" onclick="downloadInvitation()">
                 <img src="download.png" alt="Télécharger l'invitation" class="action-button">
             </a>
-            <a href="https://forms.gle/WkRJuaVucAEmQtUp6" target="_blank">
+            <a href="https://forms.gle/vrFrE7c4EZEe3cPT7" target="_blank">
                 <img src="answer.png" alt="Répondre au formulaire" class="action-button">
             </a>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
     <script>
+        // Fonction pour détecter si l'appareil est sous iOS
         function isIOS() {
             return /iPhone|iPad|iPod/i.test(navigator.userAgent);
         }
 
+        // Variables pour contrôler l'état de la vidéo et la musique
         let isMusicPlaying = false;
         let audio = new Audio('musique.mp3');
         let cardVideo = document.getElementById('card-video');
+        let inviteImage = document.getElementById('invite-image');
         let arrowRight = document.getElementById('arrow-right');
         let clickCount = 0;
-        let pauseTimes = [4.3, 6, 13, 15, 23];
+        let pauseTimes = [3.012,6.818,7.638,11.106];
+        let initialClick = true;
 
+        // Définir la vidéo de la carte en fonction de l'appareil
         window.addEventListener('load', () => {
             if (isIOS()) {
                 cardVideo.src = "card_animationios.mp4";
                 cardVideo.type = "video/mp4";
+                pauseTimes = [2.897,6.705,7.449,10.772]; // Timeline spécifique pour iPhone
             } else {
                 cardVideo.src = "card_animation.webm";
                 cardVideo.type = "video/webm";
@@ -192,9 +198,21 @@
             document.getElementById('loading-screen').style.display = 'none';
             document.getElementById('content').style.display = 'block';
             cardVideo.currentTime = 0;
-            cardVideo.pause(); // Mettre la vidéo en pause au démarrage
-            showArrow(); // Afficher la flèche pour inviter l'utilisateur à cliquer
         });
+
+        function startTransition() {
+            inviteImage.classList.add('fade-out');
+            setTimeout(showVideo, 800);
+        }
+
+        function showVideo() {
+            inviteImage.style.display = 'none';
+            cardVideo.style.display = 'block';
+            cardVideo.pause();
+            cardVideo.currentTime = 0;
+            initialClick = false;
+            showArrow();
+        }
 
         function playMusic() {
             if (!isMusicPlaying) {
