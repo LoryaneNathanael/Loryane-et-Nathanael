@@ -154,7 +154,7 @@
         </video>
 
         <!-- Vidéo de la carte (différente selon l'appareil) -->
-        <video id="card-video" playsinline></video>
+        <video id="card-video" muted playsinline></video>
 
         <!-- Boutons d'action (masqués au départ) -->
         <div id="action-buttons">
@@ -193,14 +193,23 @@
                 cardVideo.type = "video/webm";
             }
 
-            // Cacher l'écran de chargement et afficher le contenu principal
-            document.getElementById('loading-screen').style.display = 'none';
-            document.getElementById('content').style.display = 'block';
-
-            // S'assurer que la vidéo est affichée en pause dès le début
+            // Charger les métadonnées et préparer la vidéo
+            cardVideo.load();
             cardVideo.currentTime = 0;
             cardVideo.pause();
-            cardVideo.style.display = 'block'; // Assurez-vous que la vidéo est visible
+
+            // Assurez-vous que la vidéo est visible
+            cardVideo.style.display = 'block';
+
+            // Cacher l'écran de chargement et afficher le contenu principal
+            document.getElementById('loading-screen').style.display = 'none';
+
+            // Interaction de secours pour iOS
+            document.addEventListener('touchstart', () => {
+                cardVideo.load();
+                cardVideo.pause();
+                cardVideo.currentTime = 0;
+            }, { once: true });
         });
 
         function playMusic() {
