@@ -167,7 +167,6 @@
         </div>
     </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
     <script>
         // Fonction pour détecter si l'appareil est sous iOS
         function isIOS() {
@@ -178,7 +177,6 @@
         let isMusicPlaying = false;
         let audio = new Audio('musique.mp3');
         let cardVideo = document.getElementById('card-video');
-        let inviteImage = document.getElementById('invite-image');
         let arrowRight = document.getElementById('arrow-right');
         let clickCount = 0;
         let pauseTimes = [3.012,6.818,7.638,11.106];
@@ -194,25 +192,16 @@
                 cardVideo.src = "card_animation.webm";
                 cardVideo.type = "video/webm";
             }
-            
+
+            // Cacher l'écran de chargement et afficher le contenu principal
             document.getElementById('loading-screen').style.display = 'none';
             document.getElementById('content').style.display = 'block';
+
+            // S'assurer que la vidéo est affichée en pause dès le début
             cardVideo.currentTime = 0;
-        });
-
-        function startTransition() {
-            inviteImage.classList.add('fade-out');
-            setTimeout(showVideo, 800);
-        }
-
-        function showVideo() {
-            inviteImage.style.display = 'none';
-            cardVideo.style.display = 'block';
             cardVideo.pause();
-            cardVideo.currentTime = 0;
-            initialClick = false;
-            showArrow();
-        }
+            cardVideo.style.display = 'block'; // Assurez-vous que la vidéo est visible
+        });
 
         function playMusic() {
             if (!isMusicPlaying) {
