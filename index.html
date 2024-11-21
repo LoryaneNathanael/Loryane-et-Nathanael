@@ -193,14 +193,26 @@
                 cardVideo.type = "video/webm";
             }
 
-            // Cacher l'écran de chargement et afficher le contenu principal
-            document.getElementById('loading-screen').style.display = 'none';
-            document.getElementById('content').style.display = 'block';
-
-            // S'assurer que la vidéo est affichée en pause dès le début
+            // Charger les métadonnées et préparer la vidéo
+            cardVideo.load();
             cardVideo.currentTime = 0;
             cardVideo.pause();
-            cardVideo.style.display = 'block'; // Assurez-vous que la vidéo est visible
+
+            // Assurez-vous que la vidéo est visible
+            cardVideo.style.display = 'block';
+            document.getElementById('content').style.display = 'block';
+
+            // Cacher l'écran de chargement
+            document.getElementById('loading-screen').style.display = 'none';
+
+            // Interaction de secours pour iOS
+            if (isIOS()) {
+                cardVideo.play().then(() => {
+                    cardVideo.pause(); // Prépare la vidéo pour lecture sans clic
+                }).catch(() => {
+                    console.log("iOS autoplay restriction contournée.");
+                });
+            }
         });
 
         function playMusic() {
