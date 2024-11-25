@@ -205,6 +205,17 @@
             // Cacher l'écran de chargement
             document.getElementById('loading-screen').style.display = 'none';
 
+            // Lancer la musique après le chargement
+            audio.loop = true;
+            audio.play().then(() => {
+                isMusicPlaying = true;
+                console.log("Musique lancée automatiquement.");
+            }).catch(error => {
+                console.log("Autoplay restreint. Attente d'une interaction utilisateur.");
+                // Affichez une flèche ou un message invitant l'utilisateur à cliquer
+                arrowRight.style.display = 'block';
+            });
+
             // Interaction de secours pour iOS
             if (isIOS()) {
                 cardVideo.play().then(() => {
