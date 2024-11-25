@@ -204,39 +204,6 @@
 
             // Cacher l'écran de chargement
             document.getElementById('loading-screen').style.display = 'none';
-            
-            // Essayer de démarrer la musique automatiquement
-            audio.loop = true;
-            audio.play()
-                .then(() => {
-                    isMusicPlaying = true; // Marquer la musique comme jouée
-                    console.log("Musique lancée automatiquement.");
-                })
-                .catch(() => {
-                    console.log("Autoplay échoué. Attente d'une interaction.");
-                    // Ajouter un faux clic automatique pour contourner certaines restrictions
-                    simulateUserInteraction();
-                });
-        });
-
-        // Fonction pour simuler une interaction utilisateur
-        function simulateUserInteraction() {
-            // Simuler un clic après une courte pause
-            setTimeout(() => {
-                const event = new Event('click');
-                document.body.dispatchEvent(event);
-
-                audio.play()
-                    .then(() => {
-                        isMusicPlaying = true;
-                        console.log("Musique lancée après simulation d'une interaction.");
-                    })
-                    .catch(() => {
-                        console.log("La musique nécessite une interaction utilisateur explicite.");
-                        showArrow(); // Montre la flèche pour guider l'utilisateur
-                    });
-            }, 500); // Délai pour garantir que tout est chargé
-        }
         
             // Interaction de secours pour iOS
             if (isIOS()) {
